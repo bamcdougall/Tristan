@@ -4,7 +4,7 @@
   <title>A Derivative Financial Instrument</title>
   <meta charset="utf-8">
   <meta name="description" content="A Derivative Financial Instrument">
-  <meta name="author" content="Robby Twesten &amp; Tristan Dillman McDougall">
+  <meta name="author" content="Robert Twesten &amp; Tristan Dillman McDougall">
   <meta name="generator" content="slidify" />
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta http-equiv="X-UA-Compatible" content="chrome=1">
@@ -35,7 +35,7 @@
   <hgroup class="auto-fadein">
     <h1>A Derivative Financial Instrument</h1>
     <h2>Pricing a Call Option with Two Step Binomial Model</h2>
-    <p>Robby Twesten &amp; Tristan Dillman McDougall<br/>RT Financials</p>
+    <p>Robert Twesten &amp; Tristan Dillman McDougall<br/>RT Financials</p>
   </hgroup>
   <article></article>  
 </slide>
@@ -100,8 +100,10 @@
   <article data-timings="">
     <h3>Definition of \(e\)</h3>
 
+<p>$ ^ $</p>
+
 <p>\begin{equation}
-    e = \lim_{n\to\infty} (1 + n)^{1/n}
+    e = \lim_{n\to\infty} (1 + n)<sup>{1/n}</sup>
 \end{equation}</p>
 
 <h3>Integration</h3>
@@ -140,7 +142,7 @@
 </ul>
 
 <p>\begin{equation}
-    \mu =  \sum_{i=1}^{n} \frac{x_i}{n}
+    \mu =  \sum_{i=1}<sup>{n}</sup> \frac{x_i}{n}
 \end{equation}</p>
 
 <ul>
@@ -148,13 +150,13 @@
 </ul>
 
 <p>\begin{equation}
-    \sigma^2  =  \sum_{i=1}^n \frac{(x_i - \mu)^2}{n}
+    \sigma<sup>2</sup>  =  \sum_{i=1}<sup>n</sup> \frac{(x_i - \mu)<sup>2}{n}</sup>
 \end{equation}
 \begin{equation}
 \vdots
 \end{equation}
 \begin{equation}
-   \sigma^2  =  E[x^2] - E[x]^2<br>
+   \sigma<sup>2</sup>  =  E[x<sup>2]</sup> - E[x]<sup>2</sup><br>
 \end{equation}</p>
 
   </article>

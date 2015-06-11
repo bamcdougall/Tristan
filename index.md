@@ -1,7 +1,7 @@
 ---
 title       : A Derivative Financial Instrument
 subtitle    : Pricing a Call Option with Two Step Binomial Model
-author      : Robby Twesten & Tristan Dillman McDougall 
+author      : Robert Twesten & Tristan Dillman McDougall 
 job         : RT Financials
 framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
 highlighter : highlight.js  # {highlight.js, prettify, highlight}
@@ -49,6 +49,8 @@ knit        : slidify::knit2slides
 ## Tools from AP Calculus
 
 ### Definition of $e$
+
+$ ^ $
 
 \begin{equation}
     e = \lim_{n\to\infty} (1 + n)^{1/n}
