@@ -1,9 +1,9 @@
 ---
-title       : A Derivative Financial Instrument
-subtitle    : Pricing a Call Option with Two Step Binomial Model
-author      : Robert Twesten, Tristan Dillman McDougall, & Brendan McDougall
+title       : Brief Introduction to Pricing Derivatives
+subtitle    : Pricing a Call Option with a Two Step Binomial Model
+author      : Robby Twesten & Tristan McDougall 
 job         : RT Financials
-framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
+framework   : io2012     # {io2012, html5slides, shower, dzslides, ...}
 highlighter : highlight.js  # {highlight.js, prettify, highlight}
 hitheme     : tomorrow      # 
 widgets     : [mathjax, bootstrap]            # {mathjax, quiz, bootstrap}
@@ -12,7 +12,6 @@ knit        : slidify::knit2slides
 ---
 
 ## Outline
-
 ### Tools:  
 1. Programming Environment
 2. Probability
@@ -21,8 +20,6 @@ knit        : slidify::knit2slides
 ### Finance Theory:  
 1. Future Value of Money
 2. Binomial Tree Pricing Model for Option
-
-### Example
 
 ### Conclusions
 
@@ -124,11 +121,182 @@ require(DiagrammeR)
 * Show definition of Ito's lemma
 
 ---
+## Definitions from Finance
+
+### Stock
+* An asset that is partial ownership of a publicly traded firm.
+
+
+### European Option
+* Right to buy (long) or sell (short) an asset (stock) for a strike price at a set time (maturity), for a fee today.
+
+
+### Call Option
+*  The option to buy a stock in the future at a fixed price.
+* Two sides:  a buyer and a seller
+
+### Put Option
+* The option to sell a stock in the fture at a fixed price.
+* Two sides:  a buyer and a seller
+
+
+---
+
 ## Future Value of Money
 
-* Stuffs on present value of money versus future value of money
-* Show compounding interest
-* Show compounding interest in limit of large number of small periods (Defn of e)
+r = risk free interest rate   
+Pv = Present Value of Money  
+Fv = Future Value of Money
+$$ Fv_1 = Pv + r(Pv) $$
+
+---
+
+## Future Value of Money
+
+
+r = risk free interest rate   
+Pv = Present Value of Money  
+Fv = Future Value of Money
+$$ Fv_1 = Pv + r(Pv) $$
+  
+### Example:
+$$ r = 10\% $$
+$$ Pv = $100 $$
+$$ Fv_1 = ? $$
+
+---
+
+## Future Value of Money
+
+r = risk free interest rate   
+Pv = Present Value of Money  
+Fv = Future Value of Money
+$$ Fv_1 = Pv + r(Pv) $$
+  
+### Example:
+$$ Fv_1 = $100 + (10\%)($100) $$
+$$ Fv_1 = $110 $$
+
+---
+
+## Future Value of Money
+
+r = risk free interest rate   
+Pv = Present Value of Money  
+Fv = Future Value of Money
+$$ Fv_1 = Pv + r(Pv) $$
+
+---
+
+## Future Value of Money
+
+
+r = risk free interest rate   
+Pv = Present Value of Money  
+Fv = Future Value of Money
+$$ Fv_1 = Pv + r(Pv) $$
+
+
+$$ Fv_2 = (Fv_1) + r(Fv_1) $$
+
+---
+
+## Future Value of Money
+
+r = risk free interest rate   
+Pv = Present Value of Money  
+Fv = Future Value of Money
+$$ Fv_1 = Pv + r(Pv) $$
+
+$$ Fv_2 = (Fv_1) + r(Fv_1) $$
+
+$$ Fv_2 = (Pv + r(Pv)) + r(Pv + r(Pv)) $$
+
+---
+
+## Future Value of Money
+
+r = risk free interest rate   
+Pv = Present Value of Money  
+Fv = Future Value of Money
+$$ Fv_1 = Pv + r(Pv) $$
+
+$$ Fv_2 = (Fv_1) + r(Fv_1) $$
+
+
+$$ Fv_2 = (Pv + r(Pv)) + r(Pv + r(Pv)) $$
+
+
+
+
+
+
+$$ Fv_2 = Pv(1 + 2r + r^2) $$
+
+
+
+
+$$ Fv_2 = Pv(1+r)^2 $$
+
+---
+
+## Future Value of Money
+
+r = risk free interest rate   
+Pv = Present Value of Money  
+Fv = Future Value of Money
+$$ Fv_1 = Pv + r(Pv) $$
+
+
+
+$$ Fv_2 = Pv(1+r)^2 $$
+
+$$ Fv_t = Pv(1+r)^t $$
+
+
+
+
+$$ Fv_t = Pv(1+\frac{r}{n})^{nt} $$
+
+
+### -t is a time step
+### -n is a unit conversion
+
+---
+
+## Future Value of Money
+
+r = risk free interest rate   
+Pv = Present Value of Money  
+Fv = Future Value of Money  
+n = Unit Conversion  
+t = Time Conversion
+
+$$ Fv_t = Pv(1+\frac{r}{n})^{nt} $$
+
+$$ k = \frac{n}{r} $$
+
+$$ n = k*r $$
+
+
+$$ Fv_t = Pv(1+\frac{1}{k})^{krt} $$
+
+---
+
+## Future Value of Money
+r = risk free interest rate   
+Pv = Present Value of Money  
+Fv = Future Value of Money  
+
+$$  e = \lim_{x\to\infty} (1+\frac{1}{x})^x $$
+
+$$ Fv_t = Pv(\lim_{k\to\infty} (1+\frac{1}{k})^{k})^{rt} $$
+
+$$ Fv_t = Pv (e^{rt}) $$
+
+---
+## Future Value of Money
+
 * Graphs showing discrete compounding versus continuous compounding
 
 ---
@@ -148,6 +316,11 @@ All returns and discounts are at risk-free rate.
 Risk incorporated into price of stock.
 
 ---
+
+## Binomial Tree Model
+
+---
+
 ## Portfolio Management
 
 ### Risk Free Portfolio (RFP)

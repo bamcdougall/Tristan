@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>A Derivative Financial Instrument</title>
+  <title>Brief Introduction to Pricing Derivatives</title>
   <meta charset="utf-8">
-  <meta name="description" content="A Derivative Financial Instrument">
-  <meta name="author" content="Robert Twesten, Tristan Dillman McDougall, &amp; Brendan McDougall">
+  <meta name="description" content="Brief Introduction to Pricing Derivatives">
+  <meta name="author" content="Robby Twesten &amp; Tristan McDougall">
   <meta name="generator" content="slidify" />
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta http-equiv="X-UA-Compatible" content="chrome=1">
@@ -33,9 +33,9 @@
     <!-- LOGO SLIDE -->
         <slide class="title-slide segue nobackground">
   <hgroup class="auto-fadein">
-    <h1>A Derivative Financial Instrument</h1>
-    <h2>Pricing a Call Option with Two Step Binomial Model</h2>
-    <p>Robert Twesten, Tristan Dillman McDougall, &amp; Brendan McDougall<br/>RT Financials</p>
+    <h1>Brief Introduction to Pricing Derivatives</h1>
+    <h2>Pricing a Call Option with a Two Step Binomial Model</h2>
+    <p>Robby Twesten &amp; Tristan McDougall<br/>RT Financials</p>
   </hgroup>
   <article></article>  
 </slide>
@@ -61,8 +61,6 @@
 <li>Future Value of Money</li>
 <li>Binomial Tree Pricing Model for Option</li>
 </ol>
-
-<h3>Example</h3>
 
 <h3>Conclusions</h3>
 
@@ -213,14 +211,33 @@
 
 <slide class="" id="slide-7" style="background:;">
   <hgroup>
-    <h2>Future Value of Money</h2>
+    <h2>Definitions from Finance</h2>
   </hgroup>
   <article data-timings="">
-    <ul>
-<li>Stuffs on present value of money versus future value of money</li>
-<li>Show compounding interest</li>
-<li>Show compounding interest in limit of large number of small periods (Defn of e)</li>
-<li>Graphs showing discrete compounding versus continuous compounding</li>
+    <h3>Stock</h3>
+
+<ul>
+<li>An asset that is partial ownership of a publicly traded firm.</li>
+</ul>
+
+<h3>European Option</h3>
+
+<ul>
+<li>Right to buy (long) or sell (short) an asset (stock) for a strike price at a set time (maturity), for a fee today.</li>
+</ul>
+
+<h3>Call Option</h3>
+
+<ul>
+<li> The option to buy a stock in the future at a fixed price.</li>
+<li>Two sides:  a buyer and a seller</li>
+</ul>
+
+<h3>Put Option</h3>
+
+<ul>
+<li>The option to sell a stock in the fture at a fixed price.</li>
+<li>Two sides:  a buyer and a seller</li>
 </ul>
 
   </article>
@@ -228,6 +245,208 @@
 </slide>
 
 <slide class="" id="slide-8" style="background:;">
+  <hgroup>
+    <h2>Future Value of Money</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>r = risk free interest rate<br>
+Pv = Present Value of Money<br>
+Fv = Future Value of Money
+\[ Fv_1 = Pv + r(Pv) \]</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-9" style="background:;">
+  <hgroup>
+    <h2>Future Value of Money</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>r = risk free interest rate<br>
+Pv = Present Value of Money<br>
+Fv = Future Value of Money
+\[ Fv_1 = Pv + r(Pv) \]</p>
+
+<h3>Example:</h3>
+
+<p>\[ r = 10\% \]
+\[ Pv = $100 \]
+\[ Fv_1 = ? \]</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-10" style="background:;">
+  <hgroup>
+    <h2>Future Value of Money</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>r = risk free interest rate<br>
+Pv = Present Value of Money<br>
+Fv = Future Value of Money
+\[ Fv_1 = Pv + r(Pv) \]</p>
+
+<h3>Example:</h3>
+
+<p>\[ Fv_1 = $100 + (10\%)($100) \]
+\[ Fv_1 = $110 \]</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-11" style="background:;">
+  <hgroup>
+    <h2>Future Value of Money</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>r = risk free interest rate<br>
+Pv = Present Value of Money<br>
+Fv = Future Value of Money
+\[ Fv_1 = Pv + r(Pv) \]</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-12" style="background:;">
+  <hgroup>
+    <h2>Future Value of Money</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>r = risk free interest rate<br>
+Pv = Present Value of Money<br>
+Fv = Future Value of Money
+\[ Fv_1 = Pv + r(Pv) \]</p>
+
+<p>\[ Fv_2 = (Fv_1) + r(Fv_1) \]</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-13" style="background:;">
+  <hgroup>
+    <h2>Future Value of Money</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>r = risk free interest rate<br>
+Pv = Present Value of Money<br>
+Fv = Future Value of Money
+\[ Fv_1 = Pv + r(Pv) \]</p>
+
+<p>\[ Fv_2 = (Fv_1) + r(Fv_1) \]</p>
+
+<p>\[ Fv_2 = (Pv + r(Pv)) + r(Pv + r(Pv)) \]</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-14" style="background:;">
+  <hgroup>
+    <h2>Future Value of Money</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>r = risk free interest rate<br>
+Pv = Present Value of Money<br>
+Fv = Future Value of Money
+\[ Fv_1 = Pv + r(Pv) \]</p>
+
+<p>\[ Fv_2 = (Fv_1) + r(Fv_1) \]</p>
+
+<p>\[ Fv_2 = (Pv + r(Pv)) + r(Pv + r(Pv)) \]</p>
+
+<p>\[ Fv_2 = Pv(1 + 2r + r^2) \]</p>
+
+<p>\[ Fv_2 = Pv(1+r)^2 \]</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-15" style="background:;">
+  <hgroup>
+    <h2>Future Value of Money</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>r = risk free interest rate<br>
+Pv = Present Value of Money<br>
+Fv = Future Value of Money
+\[ Fv_1 = Pv + r(Pv) \]</p>
+
+<p>\[ Fv_2 = Pv(1+r)^2 \]</p>
+
+<p>\[ Fv_t = Pv(1+r)^t \]</p>
+
+<p>\[ Fv_t = Pv(1+\frac{r}{n})^{nt} \]</p>
+
+<h3>-t is a time step</h3>
+
+<h3>-n is a unit conversion</h3>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-16" style="background:;">
+  <hgroup>
+    <h2>Future Value of Money</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>r = risk free interest rate<br>
+Pv = Present Value of Money<br>
+Fv = Future Value of Money<br>
+n = Unit Conversion<br>
+t = Time Conversion</p>
+
+<p>\[ Fv_t = Pv(1+\frac{r}{n})^{nt} \]</p>
+
+<p>\[ k = \frac{n}{r} \]</p>
+
+<p>\[ n = k*r \]</p>
+
+<p>\[ Fv_t = Pv(1+\frac{1}{k})^{krt} \]</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-17" style="background:;">
+  <hgroup>
+    <h2>Future Value of Money</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>r = risk free interest rate<br>
+Pv = Present Value of Money<br>
+Fv = Future Value of Money  </p>
+
+<p>\[  e = \lim_{x\to\infty} (1+\frac{1}{x})^x \]</p>
+
+<p>\[ Fv_t = Pv(\lim_{k\to\infty} (1+\frac{1}{k})^{k})^{rt} \]</p>
+
+<p>\[ Fv_t = Pv (e^{rt}) \]</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-18" style="background:;">
+  <hgroup>
+    <h2>Future Value of Money</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Graphs showing discrete compounding versus continuous compounding</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-19" style="background:;">
   <hgroup>
     <h2>Risk Neutral Valuation of a Portfolio</h2>
   </hgroup>
@@ -257,7 +476,17 @@
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-9" style="background:;">
+<slide class="" id="slide-20" style="background:;">
+  <hgroup>
+    <h2>Binomial Tree Model</h2>
+  </hgroup>
+  <article data-timings="">
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-21" style="background:;">
   <hgroup>
     <h2>Portfolio Management</h2>
   </hgroup>
@@ -286,7 +515,7 @@
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-10" style="background:;">
+<slide class="" id="slide-22" style="background:;">
   <hgroup>
     <h2>Pricing Slides (to be done)</h2>
   </hgroup>
@@ -347,26 +576,98 @@
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=7 title='Future Value of Money'>
+        data-slide=7 title='Definitions from Finance'>
          7
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=8 title='Risk Neutral Valuation of a Portfolio'>
+        data-slide=8 title='Future Value of Money'>
          8
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=9 title='Portfolio Management'>
+        data-slide=9 title='Future Value of Money'>
          9
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=10 title='Pricing Slides (to be done)'>
+        data-slide=10 title='Future Value of Money'>
          10
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=11 title='Future Value of Money'>
+         11
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=12 title='Future Value of Money'>
+         12
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=13 title='Future Value of Money'>
+         13
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=14 title='Future Value of Money'>
+         14
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=15 title='Future Value of Money'>
+         15
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=16 title='Future Value of Money'>
+         16
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=17 title='Future Value of Money'>
+         17
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=18 title='Future Value of Money'>
+         18
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=19 title='Risk Neutral Valuation of a Portfolio'>
+         19
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=20 title='Binomial Tree Model'>
+         20
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=21 title='Portfolio Management'>
+         21
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=22 title='Pricing Slides (to be done)'>
+         22
       </a>
     </li>
   </ul>
