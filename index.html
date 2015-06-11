@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>A Derivative Financial Instrument</title>
+  <title>Brief Introduction to Pricing Derivatives</title>
   <meta charset="utf-8">
-  <meta name="description" content="A Derivative Financial Instrument">
-  <meta name="author" content="Robert Twesten &amp; Tristan Dillman McDougall">
+  <meta name="description" content="Brief Introduction to Pricing Derivatives">
+  <meta name="author" content="Robby Twesten &amp; Tristan McDougall">
   <meta name="generator" content="slidify" />
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta http-equiv="X-UA-Compatible" content="chrome=1">
@@ -33,9 +33,9 @@
     <!-- LOGO SLIDE -->
         <slide class="title-slide segue nobackground">
   <hgroup class="auto-fadein">
-    <h1>A Derivative Financial Instrument</h1>
-    <h2>Pricing a Call Option with Two Step Binomial Model</h2>
-    <p>Robert Twesten &amp; Tristan Dillman McDougall<br/>RT Financials</p>
+    <h1>Brief Introduction to Pricing Derivatives</h1>
+    <h2>Pricing a Call Option with a Two Step Binomial Model</h2>
+    <p>Robby Twesten &amp; Tristan McDougall<br/>RT Financials</p>
   </hgroup>
   <article></article>  
 </slide>
@@ -44,7 +44,7 @@
     <!-- SLIDES -->
     <slide class="" id="slide-1" style="background:;">
   <hgroup>
-    <h2>Outline</h2>
+    <h2>Basics</h2>
   </hgroup>
   <article data-timings="">
     <h3>Tools:</h3>
@@ -52,6 +52,7 @@
 <ol>
 <li>Programming Environment</li>
 <li>Probability</li>
+<li>Algebra</li>
 <li>Calculus</li>
 </ol>
 
@@ -62,32 +63,26 @@
 <li>Binomial Tree Pricing Model for Option</li>
 </ol>
 
-<h3>Example</h3>
-
-<h3>Conclusions</h3>
-
   </article>
   <!-- Presenter Notes -->
 </slide>
 
 <slide class="class" id="id" style="background:;">
   <hgroup>
-    <h2>Programming Environment</h2>
+    <h2>Definitions</h2>
   </hgroup>
   <article data-timings="">
-    <h3>R is a free statistical software package with integrated graphics</h3>
+    <h3>Stochastic Process</h3>
 
-<ul>
-<li><p><a href="http://cran.r-project.org/">Open Source Code</a>, Shared Libraries, &amp; <a href="http://www.rstudio.com/">Integrated Development Environment</a> </p></li>
-<li><p><a href="http://ggplot2.org/">Plotting</a>, <a href="http://www.latex-project.org/">LaTex</a> for equations, &amp; <a href="https://github.com/ramnathv/slidifyExamples">Slide Presentations</a></p></li>
-</ul>
+<h4>An observation whose value is random with respect to time.</h4>
 
-<h3>Version Control</h3>
+<h3>Option</h3>
 
-<ul>
-<li><a href="https://www.git-scm.com">Git</a> invented by Linus Torvalds (open source Linux)</li>
-<li><a href="https://github.com/RobertTwesten/Tristan">Git Hub</a> distributed version control (<a href="https://github.com/google">used by Google</a>)</li>
-</ul>
+<h4>The rights to buy an asset for a set price at a set time, for a small fee today.</h4>
+
+<h3>Call Option</h3>
+
+<h4>Selling an option.</h4>
 
   </article>
   <!-- Presenter Notes -->
@@ -95,36 +90,13 @@
 
 <slide class="" id="slide-3" style="background:;">
   <hgroup>
-    <h2>Tools from Calculus</h2>
+    <h2>Future Value of Money</h2>
   </hgroup>
   <article data-timings="">
-    <h3>Definition of \(e\)</h3>
-
-<div class="centered">
-\begin{equation}
-    e = \lim_{n\to\infty} (1 + n)^{1/n}
-\end{equation}
-</div>
-
-<h3>Integration</h3>
-
-<ul>
-<li>Assume a <a href="http://en.wikipedia.org/wiki/Measure_(mathematics)">linear measure</a> in \(\Re^1\), then
-\begin{equation}
-\int dx = x + C
-\end{equation}</li>
-</ul>
-
-<h3>Total Derivative</h3>
-
-<ul>
-<li>Let \(f\) be a function of \(x(t)\), \(y(t)\), and \(t\). The total derivative with respect to time is</li>
-</ul>
-
-<p>\begin{equation}
-    \frac{d f(x(t), y(t), t)}{d t} = \frac{\partial f}{\partial x} \frac{d x}{d t} + \frac{\partial f}{\partial y} \frac{d y}{d t}
-    + \frac{\partial f}{\partial t} \frac{d t}{d t}
-\end{equation}</p>
+    <p>r = rate / time<br>
+Pv = Present Value of Money<br>
+Fv = Future Value of Money
+\[ Fv_1 = Pv + r(Pv) \]</p>
 
   </article>
   <!-- Presenter Notes -->
@@ -132,40 +104,19 @@
 
 <slide class="" id="slide-4" style="background:;">
   <hgroup>
-    <h2>Tools from Statistics</h2>
+    <h2>Future Value of Money</h2>
   </hgroup>
   <article data-timings="">
-    <h3>Observations</h3>
+    <p>r = rate / time<br>
+Pv = Present Value of Money<br>
+Fv = Future Value of Money
+\[ Fv_1 = Pv + r(Pv) \]</p>
 
-<ul>
-<li>Given a set of observations \(\{x_i\}\), the mean is</li>
-</ul>
+<h3>Example:</h3>
 
-<div class="centered">
-\begin{equation}
-    \mu =  \sum_{i=1}^{n} \frac{x_i}{n}
-\end{equation}
-</div>
-
-<ul>
-<li>The variance (a measure of disorder) is</li>
-</ul>
-
-<div class="centered">
-\begin{equation}
-   \sigma^2  =  \sum_{i=1}^n \frac{(x_i - \mu)^2}{n}
-\end{equation}
-</div>
-
-<p>\begin{equation}
-\vdots
-\end{equation}</p>
-
-<div class="centered">
-\begin{equation}
-   \sigma^2  =  E[x^2] - E[x]^2
-\end{equation}
-</div>
+<p>\[ r = 10\% \]
+\[ Pv = $100 \]
+\[ Fv_1 = ? \]</p>
 
   </article>
   <!-- Presenter Notes -->
@@ -173,24 +124,18 @@
 
 <slide class="" id="slide-5" style="background:;">
   <hgroup>
-    <h2>Tools from Probability</h2>
+    <h2>Future Value of Money</h2>
   </hgroup>
   <article data-timings="">
-    <h3><a href="http://en.wikipedia.org/wiki/Stochastic_process">Stochastic Processes</a>: observations whose values are random with respect to time</h3>
+    <p>r = rate / time<br>
+Pv = Present Value of Money<br>
+Fv = Future Value of Money
+\[ Fv_1 = Pv + r(Pv) \]</p>
 
-<h3>Markov Process</h3>
+<h3>Example:</h3>
 
-<ul>
-<li>Future stock price depends only on current price.</li>
-<li>Distributions are normal. Means are additive. Variances are additive.</li>
-</ul>
-
-<h3>Wiener Process</h3>
-
-<ul>
-<li>Future stock price depends only on current price.</li>
-<li>Distributions are standard normal, i.e. \(\mu = 0\) &amp;  \(\sigma^2 = 1\).</li>
-</ul>
+<p>\[ Fv_1 = $100 + (10\%)($100) \]
+\[ Fv_1 = $110 \]</p>
 
   </article>
   <!-- Presenter Notes -->
@@ -198,14 +143,13 @@
 
 <slide class="" id="slide-6" style="background:;">
   <hgroup>
-    <h2>Tools from Stochastic Calculus</h2>
+    <h2>Future Value of Money</h2>
   </hgroup>
   <article data-timings="">
-    <h3>Ito&#39;s Lemma</h3>
-
-<ul>
-<li>Show definition of Ito&#39;s lemma</li>
-</ul>
+    <p>r = rate / time<br>
+Pv = Present Value of Money<br>
+Fv = Future Value of Money
+\[ Fv_1 = Pv + r(Pv) \]</p>
 
   </article>
   <!-- Presenter Notes -->
@@ -216,12 +160,12 @@
     <h2>Future Value of Money</h2>
   </hgroup>
   <article data-timings="">
-    <ul>
-<li>Stuffs on present value of money versus future value of money</li>
-<li>Show compounding interest</li>
-<li>Show compounding interest in limit of large number of small periods (Defn of e)</li>
-<li>Graphs showing discrete compounding versus continuous compounding</li>
-</ul>
+    <p>r = rate / time<br>
+Pv = Present Value of Money<br>
+Fv = Future Value of Money
+\[ Fv_1 = Pv + r(Pv) \]</p>
+
+<p>\[ Fv_2 = (Fv_1) + r(Fv_1) \]</p>
 
   </article>
   <!-- Presenter Notes -->
@@ -229,7 +173,171 @@
 
 <slide class="" id="slide-8" style="background:;">
   <hgroup>
-    <h2>Risk Neutral Valuation of a Portfolio</h2>
+    <h2>Future Value of Money</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>r = rate / time<br>
+Pv = Present Value of Money<br>
+Fv = Future Value of Money
+\[ Fv_1 = Pv + r(Pv) \]</p>
+
+<p>\[ Fv_2 = (Fv_1) + r(Fv_1) \]</p>
+
+<p>\[ Fv_2 = (Pv + r(Pv)) + r(Pv + r(Pv)) \]</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-9" style="background:;">
+  <hgroup>
+    <h2>Future Value of Money</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>r = rate / time<br>
+Pv = Present Value of Money<br>
+Fv = Future Value of Money
+\[ Fv_1 = Pv + r(Pv) \]</p>
+
+<p>\[ Fv_2 = (Fv_1) + r(Fv_1) \]</p>
+
+<p>\[ Fv_2 = (Pv + r(Pv)) + r(Pv + r(Pv)) \]</p>
+
+<p>\[ Fv_2 = Pv(1 + 2r + r^2) \]</p>
+
+<p>\[ Fv_2 = Pv(1+r)^2 \]</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-10" style="background:;">
+  <hgroup>
+    <h2>Future Value of Money</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>r = rate / time<br>
+Pv = Present Value of Money<br>
+Fv = Future Value of Money
+\[ Fv_1 = Pv + r(Pv) \]</p>
+
+<p>\[ Fv_2 = Pv(1+r)^2 \]</p>
+
+<p>\[ Fv_t = Pv(1+r)^t \]</p>
+
+<p>\[ Fv_t = Pv(1+\frac{r}{n})^{nt} \]</p>
+
+<h3>-t is a time step</h3>
+
+<h3>-n is a unit conversion</h3>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-11" style="background:;">
+  <hgroup>
+    <h2>Future Value of Money</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>r = rate / time<br>
+Pv = Present Value of Money<br>
+Fv = Future Value of Money<br>
+n = Unit Conversion<br>
+t = Time Conversion</p>
+
+<p>\[ Fv_t = Pv(1+\frac{r}{n})^{nt} \]</p>
+
+<p>\[ k = \frac{n}{r} \]</p>
+
+<p>\[ n = k*r \]</p>
+
+<p>\[ Fv_t = Pv(1+\frac{1}{k})^{krt} \]</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-12" style="background:;">
+  <hgroup>
+    <h2>Future Value of Money</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>r = rate / time<br>
+Pv = Present Value of Money<br>
+Fv = Future Value of Money  </p>
+
+<p>\[  e = \lim_{x\to\infty} (1+\frac{1}{x})^x \]</p>
+
+<p>\[ Fv_t = Pv(\lim_{k\to\infty} (1+\frac{1}{k})^{k})^{rt} \]</p>
+
+<p>\[ Fv_t = Pv (e^{rt}) \]</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-13" style="background:;">
+  <hgroup>
+    <h2>Binomial Tree Model</h2>
+  </hgroup>
+  <article data-timings="">
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-14" style="background:;">
+  <hgroup>
+    <h2>Integrated Development Environment (IDE)</h2>
+  </hgroup>
+  <article data-timings="">
+    <h3>R:</h3>
+
+<ul>
+<li><p>Open Source Code &amp; Shared Libraries</p></li>
+<li><p>Plotting, Typesetting, &amp; Slide Presentations</p></li>
+</ul>
+
+<h3>Version Control</h3>
+
+<ol>
+<li><a href="https://www.git-scm.com">Git</a> invented by Linus Torvalds (open source Linux)</li>
+<li><a href="https://github.com/RobertTwesten/Tristan">Git Hub</a> distributed version control (<a href="https://github.com/google">used by Google</a>)</li>
+</ol>
+
+<hr>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-15" style="background:;">
+  <article data-timings="">
+    
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-16" style="background:;">
+  <hgroup>
+    <h2>Tools from Probability</h2>
+  </hgroup>
+  <article data-timings="">
+    <h3>Binomial Distribution</h3>
+
+<ol>
+<li>\(E[X] = n p\)</li>
+<li>\(Var(X) = n p(1 - p)\)</li>
+</ol>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-17" style="background:;">
+  <hgroup>
+    <h2>Risk Neutral Valuation</h2>
   </hgroup>
   <article data-timings="">
     <h3>Assumptions</h3>
@@ -257,16 +365,12 @@
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-9" style="background:;">
+<slide class="" id="slide-18" style="background:;">
   <hgroup>
-    <h2>Portfolio Management</h2>
+    <h2>Risk Free Portfolio (RFP)</h2>
   </hgroup>
   <article data-timings="">
-    <h3>Risk Free Portfolio (RFP)</h3>
-
-<ul>
-<li>Value of portfolio is same whether stock price goes up or down:</li>
-</ul>
+    <h3>Value of portfolio is same whether stock price goes up or down:</h3>
 
 <p>\begin{equation}
     (\Delta S_o) u - f_u = (\Delta S_o) d - f_d
@@ -274,9 +378,7 @@
 
 <h3>\(\Delta\) Hedge</h3>
 
-<ul>
-<li>Determine number of shares \(\Delta\) required for creating a RFP</li>
-</ul>
+<h3>Determine number of shares required for RFP</h3>
 
 <p>\begin{equation}
     \Delta = \frac{f_u - f_d}{S_o (u-d)}
@@ -286,13 +388,40 @@
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-10" style="background:;">
+<slide class="" id="slide-19" style="background:;">
   <hgroup>
-    <h2>Pricing Slides (to be done)</h2>
+    <h2>Stochastic Processes</h2>
+  </hgroup>
+  <article data-timings="">
+    <h3>Stochastic processes are observations whose value is random with respect to time.</h3>
+
+<h3>Markov Process</h3>
+
+<ul>
+<li>Markov process with respect to stock price implies that future price only depends on current price.</li>
+<li>Distribution is normal</li>
+</ul>
+
+<p>Means are additive and variances are additive</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-20" style="background:;">
+  <hgroup>
+    <h2>Wiener Process</h2>
   </hgroup>
   <article data-timings="">
     <ul>
-<li>Integration of Stock price \(\Delta S / S\) etc.</li>
+<li>Distribution is standard normal, i.e. mean = 0 and variance = 1.</li>
+</ul>
+
+<p>A physical example of a Wiener processes is Brownian motion.</p>
+
+<p>\(Var(X) = E[X^2] - (E[X])^2\)</p>
+
+<ul>
 <li>Two properties are:</li>
 </ul>
 
@@ -305,43 +434,63 @@
   <!-- Presenter Notes -->
 </slide>
 
+<slide class="" id="slide-21" style="background:;">
+  <article data-timings="">
+    <pre><code class="r">1+1
+</code></pre>
+
+<pre><code>## [1] 2
+</code></pre>
+
+<p>a different test</p>
+
+<pre><code class="r">2*2
+</code></pre>
+
+<pre><code>## [1] 4
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
     <slide class="backdrop"></slide>
   </slides>
   <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
     <ul>
       <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=1 title='Outline'>
+        data-slide=1 title='Basics'>
          1
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=2 title='Programming Environment'>
+        data-slide=2 title='Definitions'>
          2
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=3 title='Tools from Calculus'>
+        data-slide=3 title='Future Value of Money'>
          3
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=4 title='Tools from Statistics'>
+        data-slide=4 title='Future Value of Money'>
          4
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=5 title='Tools from Probability'>
+        data-slide=5 title='Future Value of Money'>
          5
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=6 title='Tools from Stochastic Calculus'>
+        data-slide=6 title='Future Value of Money'>
          6
       </a>
     </li>
@@ -353,20 +502,86 @@
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=8 title='Risk Neutral Valuation of a Portfolio'>
+        data-slide=8 title='Future Value of Money'>
          8
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=9 title='Portfolio Management'>
+        data-slide=9 title='Future Value of Money'>
          9
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=10 title='Pricing Slides (to be done)'>
+        data-slide=10 title='Future Value of Money'>
          10
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=11 title='Future Value of Money'>
+         11
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=12 title='Future Value of Money'>
+         12
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=13 title='Binomial Tree Model'>
+         13
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=14 title='Integrated Development Environment (IDE)'>
+         14
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=15 title='NA'>
+         15
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=16 title='Tools from Probability'>
+         16
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=17 title='Risk Neutral Valuation'>
+         17
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=18 title='Risk Free Portfolio (RFP)'>
+         18
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=19 title='Stochastic Processes'>
+         19
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=20 title='Wiener Process'>
+         20
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=21 title='NA'>
+         21
       </a>
     </li>
   </ul>
