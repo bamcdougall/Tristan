@@ -44,42 +44,27 @@
     <!-- SLIDES -->
     <slide class="" id="slide-1" style="background:;">
   <hgroup>
-    <h2>Preparing R-programming environment</h2>
+    <h2>Outline</h2>
   </hgroup>
   <article data-timings="">
-    <pre><code class="r">require(stringr)
-require(slidify)
-require(knitr)
-require(DiagrammeR)
-</code></pre>
+    <h3>Tools:</h3>
 
-  </article>
-  <!-- Presenter Notes -->
-</slide>
+<ol>
+<li>Programming Environment</li>
+<li>Probability</li>
+<li>Calculus</li>
+</ol>
 
-<slide class="" id="slide-2" style="background:;">
-  <hgroup>
-    <h2>Tools from AP Calculus</h2>
-  </hgroup>
-  <article data-timings="">
-    <h3>Total Derivative</h3>
+<h3>Finance Theory:</h3>
 
-<h4>Stochastic Processes</h4>
-
-<h5>Stochastic processes are observations whose value is random with respect to time</h5>
-
-<ul>
-<li>Ito&#39;s Lemma</li>
-</ul>
-
-<h3>Definition of e</h3>
-
-<h4>Applications</h4>
-
-<ul>
+<ol>
 <li>Future Value of Money</li>
-<li>Discount Rate</li>
-</ul>
+<li>Binomial Tree Pricing Model for Option</li>
+</ol>
+
+<h3>Example</h3>
+
+<h3>Conclusions</h3>
 
   </article>
   <!-- Presenter Notes -->
@@ -87,15 +72,57 @@ require(DiagrammeR)
 
 <slide class="class" id="id" style="background:;">
   <hgroup>
-    <h2>Tools from Probability</h2>
+    <h2>Programming Environment</h2>
   </hgroup>
   <article data-timings="">
-    <h3>Binomial Distribution</h3>
+    <h3>R is a free statistical software package with integrated graphics</h3>
 
-<ol>
-<li>\(E[X] = n p\)</li>
-<li>\(Var(X) = n p(1 - p)\)</li>
-</ol>
+<ul>
+<li><p><a href="http://cran.r-project.org/">Open Source Code</a>, Shared Libraries, &amp; <a href="http://www.rstudio.com/">Integrated Development Environment</a> </p></li>
+<li><p><a href="http://ggplot2.org/">Plotting</a>, <a href="http://www.latex-project.org/">LaTex</a> for equations, &amp; <a href="https://github.com/ramnathv/slidifyExamples">Slide Presentations</a></p></li>
+</ul>
+
+<h3>Version Control</h3>
+
+<ul>
+<li><a href="https://www.git-scm.com">Git</a> invented by Linus Torvalds (open source Linux)</li>
+<li><a href="https://github.com/RobertTwesten/Tristan">Git Hub</a> distributed version control (<a href="https://github.com/google">used by Google</a>)</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-3" style="background:;">
+  <hgroup>
+    <h2>Tools from AP Calculus</h2>
+  </hgroup>
+  <article data-timings="">
+    <h3>Definition of \(e\)</h3>
+
+<p>\begin{equation}
+    e = \lim_{n\to\infty} (1 + n)^{1/n}
+\end{equation}</p>
+
+<h3>Integration</h3>
+
+<ul>
+<li>Assume a <a href="http://en.wikipedia.org/wiki/Measure_(mathematics)">linear measure</a> in \(\Re^1\), then
+\begin{equation}
+\int dx = x + C
+\end{equation}</li>
+</ul>
+
+<h3>Total Derivative (not covered, but will use anyway)</h3>
+
+<ul>
+<li>Let \(f\) be a function of \(x(t)\), \(y(t)\), and \(t\). The total derivative with respect to time is</li>
+</ul>
+
+<p>\begin{equation}
+    \frac{d f(x(t), y(t), t)}{d t} = \frac{\partial f}{\partial x} \frac{d x}{d t} + \frac{\partial f}{\partial y} \frac{d y}{d t}
+    + \frac{\partial f}{\partial t} \frac{d t}{d t}
+\end{equation}</p>
 
   </article>
   <!-- Presenter Notes -->
@@ -103,7 +130,96 @@ require(DiagrammeR)
 
 <slide class="" id="slide-4" style="background:;">
   <hgroup>
-    <h2>Risk Neutral Valuation</h2>
+    <h2>Tools from Statistics</h2>
+  </hgroup>
+  <article data-timings="">
+    <h3>Observations</h3>
+
+<ul>
+<li>Given a set of observations \(\{x_i\}\), the mean is</li>
+</ul>
+
+<p>\begin{equation}
+    \mu =  \sum_{i=1}^{n} \frac{x_i}{n}
+\end{equation}</p>
+
+<ul>
+<li>The variance (a measure of disorder) is </li>
+</ul>
+
+<p>\begin{equation}
+    \sigma^2  =  \sum_{i=1}^n \frac{(x_i - \mu)^2}{n}
+\end{equation}
+\begin{equation}
+\vdots
+\end{equation}
+\begin{equation}
+   \sigma^2  =  E[x^2] - E[x]^2<br>
+\end{equation}</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-5" style="background:;">
+  <hgroup>
+    <h2>Tools from Probability</h2>
+  </hgroup>
+  <article data-timings="">
+    <h3><a href="http://en.wikipedia.org/wiki/Stochastic_process">Stochastic Processes</a>: observations whose values are random with respect to time</h3>
+
+<h3>Markov Process</h3>
+
+<ul>
+<li>Future stock price depends only on current price.</li>
+<li>Distributions are normal. Means are additive. Variances are additive.</li>
+</ul>
+
+<h3>Wiener Process</h3>
+
+<ul>
+<li>Future stock price depends only on current price.</li>
+<li>Distributions are standard normal, i.e. \(\mu = 0\) &amp;  \(\sigma^2 = 1\).</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-6" style="background:;">
+  <hgroup>
+    <h2>Tools from Stochastic Calculus</h2>
+  </hgroup>
+  <article data-timings="">
+    <h3>Ito&#39;s Lemma</h3>
+
+<ul>
+<li>Show definition of Ito&#39;s lemma</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-7" style="background:;">
+  <hgroup>
+    <h2>Future Value of Money</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Stuffs on present value of money versus future value of money</li>
+<li>Show compounding interest</li>
+<li>Show compounding interest in limit of large number of small periods (Defn of e)</li>
+<li>Graphs showing discrete compounding versus continuous compounding</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-8" style="background:;">
+  <hgroup>
+    <h2>Risk Neutral Valuation of a Portfolio</h2>
   </hgroup>
   <article data-timings="">
     <h3>Assumptions</h3>
@@ -116,50 +232,64 @@ require(DiagrammeR)
 <h3>Purpose</h3>
 
 <ol>
-<li><p>Risk Neutral Valuation (RVN) simplifies pricing.</p>
-
-<p>All returns and discounts are at risk-free rate.</p></li>
-<li><p>Relationship between stock and derivative is the same regardless of risk.</p>
-
-<p>Risk incorporated into price of stock.</p></li>
+<li>Risk Neutral Valuation (RNV) simplifies pricing.</li>
 </ol>
 
-<hr>
+<p>All returns and discounts are at risk-free rate.</p>
 
-<h2>Stochastic Processes</h2>
+<ol>
+<li>Relationship between stock and derivative is the same regardless of risk.</li>
+</ol>
 
-<h3>Stochastic processes are observations whose value is random with respect to time.</h3>
+<p>Risk incorporated into price of stock.</p>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-5" style="background:;">
+<slide class="" id="slide-9" style="background:;">
   <hgroup>
-    <h3>Markov Process</h3>
+    <h2>Portfolio Management</h2>
+  </hgroup>
+  <article data-timings="">
+    <h3>Risk Free Portfolio (RFP)</h3>
+
+<ul>
+<li>Value of portfolio is same whether stock price goes up or down:</li>
+</ul>
+
+<p>\begin{equation}
+    (\Delta S_o) u - f_u = (\Delta S_o) d - f_d
+\end{equation}</p>
+
+<h3>\(\Delta\) Hedge</h3>
+
+<ul>
+<li>Determine number of shares \(\Delta\) required for creating a RFP</li>
+</ul>
+
+<p>\begin{equation}
+    \Delta = \frac{f_u - f_d}{S_o (u-d)}
+\end{equation}</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-10" style="background:;">
+  <hgroup>
+    <h2>Pricing Slides (to be done)</h2>
   </hgroup>
   <article data-timings="">
     <ul>
-<li>Markov process with respect to stock price implies that future price only depends on current price.</li>
-<li><p>Distribution is normal</p>
-
-<p>Means are additive and variances are additive</p></li>
+<li>Integration of Stock price \(\Delta S / S\) etc.</li>
+<li>Two properties are:</li>
 </ul>
 
-<hr>
-
-<h4>Wiener Process</h4>
-
-<ul>
-<li><p>Distribution is standard normal, i.e. mean = 0 and variance = 1.</p>
-
-<p>A physical example of a Wiener processes is Brownian motion.</p>
-
-<p>\(Var(X) = E[X^2] - (E[X])^2\)</p></li>
-<li><p>Two properties are:</p></li>
-<li><p>The change \(\Delta z\) during a small period of time \(\Delta t\) is \(\Delta z = \epsilon \sqrt(\Delta t)\) where \(\epsilon\) is a standard normal distribution \(\Phi(0,1)\).</p></li>
-<li><p>The values of \(\Delta z\) for any two different short intervals of time, \(\Delta t\), are independent.</p></li>
-</ul>
+<ol>
+<li> The change \(\Delta z\) during a small period of time \(\Delta t\) is \(\Delta z = \epsilon \sqrt(\Delta t)\) where \(\epsilon\) is a standard normal distribution \(\Phi(0,1)\).</li>
+<li> The values of \(\Delta z\) for any two different short intervals of time, \(\Delta t\), are independent.</li>
+</ol>
 
   </article>
   <!-- Presenter Notes -->
@@ -171,32 +301,62 @@ require(DiagrammeR)
     <ul>
       <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=1 title='Preparing R-programming environment'>
+        data-slide=1 title='Outline'>
          1
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=2 title='Tools from AP Calculus'>
+        data-slide=2 title='Programming Environment'>
          2
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=3 title='Tools from Probability'>
+        data-slide=3 title='Tools from AP Calculus'>
          3
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=4 title='Risk Neutral Valuation'>
+        data-slide=4 title='Tools from Statistics'>
          4
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=5 title='Markov Process'>
+        data-slide=5 title='Tools from Probability'>
          5
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=6 title='Tools from Stochastic Calculus'>
+         6
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=7 title='Future Value of Money'>
+         7
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=8 title='Risk Neutral Valuation of a Portfolio'>
+         8
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=9 title='Portfolio Management'>
+         9
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=10 title='Pricing Slides (to be done)'>
+         10
       </a>
     </li>
   </ul>
