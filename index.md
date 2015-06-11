@@ -39,22 +39,17 @@ knit        : slidify::knit2slides
 ### Version Control
 * [Git](https://www.git-scm.com) invented by Linus Torvalds (open source Linux)
 * [Git Hub](https://github.com/RobertTwesten/Tristan) distributed version control ([used by Google](https://github.com/google))
- 
-
-
 
 ---
-
-
-## Tools from AP Calculus
+## Tools from Calculus
 
 ### Definition of $e$
 
-$ ^ $
-
+<div class="centered">
 \begin{equation}
     e = \lim_{n\to\infty} (1 + n)^{1/n}
 \end{equation}
+</div>
 
 ### Integration
 
@@ -63,7 +58,7 @@ $ ^ $
     \int dx = x + C
 \end{equation}
 
-### Total Derivative (not covered, but will use anyway)
+### Total Derivative
 
 * Let $f$ be a function of $x(t)$, $y(t)$, and $t$. The total derivative with respect to time is
 
@@ -78,25 +73,32 @@ $ ^ $
 ### Observations
 * Given a set of observations $\{x_i\}$, the mean is
 
+<div class="centered">
 \begin{equation}
     \mu =  \sum_{i=1}^{n} \frac{x_i}{n}
 \end{equation}
+</div>
 
 
-* The variance (a measure of disorder) is 
+* The variance (a measure of disorder) is
 
+<div class="centered">
 \begin{equation}
-    \sigma^2  =  \sum_{i=1}^n \frac{(x_i - \mu)^2}{n}
+   \sigma^2  =  \sum_{i=1}^n \frac{(x_i - \mu)^2}{n}
 \end{equation}
+</div>
+
 \begin{equation}
 \vdots
 \end{equation}
+
+<div class="centered">
 \begin{equation}
-   \sigma^2  =  E[x^2] - E[x]^2    
+   \sigma^2  =  E[x^2] - E[x]^2
 \end{equation}
+</div>
 
 ---
-
 ## Tools from Probability
 ### [Stochastic Processes](http://en.wikipedia.org/wiki/Stochastic_process): observations whose values are random with respect to time
 
