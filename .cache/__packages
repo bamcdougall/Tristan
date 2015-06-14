@@ -3,3 +3,10 @@ stringr
 slidify
 knitr
 DiagrammeR
+dplyr
+lubridate
+ggplot2
+Cairo
+animation
+gridExtra
+gtable
