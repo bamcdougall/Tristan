@@ -96,7 +96,7 @@ knit        : slidify::knit2slides
 </div>
 
 ---
-## Tools from Probability
+## Tools from Probability (1 / 3)
 ### [Stochastic Processes](http://en.wikipedia.org/wiki/Stochastic_process): observations whose values are random with respect to time
 
 
@@ -108,6 +108,30 @@ knit        : slidify::knit2slides
 
 * Future stock price depends only on current price.
 * Distributions are standard normal, i.e. $\mu = 0$ &  $\sigma^2 = 1$.
+
+---
+## Tools from Probability (2 / 3)
+### Normal Distribution
+* Density is
+<div class="centered">
+\begin{equation}
+   f(x) = \frac{1}{\sqrt{2 \pi} \sigma} e^{-(x - \mu)^2/2 \sigma^2}
+\end{equation}
+</div>
+
+
+* Shape characterized by $\mu = m$ &  $\sigma^2 = s^2$
+
+### Standard Normal Distribution
+* Characterized by $\mu = 0$ &  $\sigma^2 = 1$
+
+---
+## Tools from Probability (3 / 3)
+### Monte Carlo Data, Normal Distribution, & Cental Limit Theorm
+* Left:  Test scores of 50 students from an exam with $\mu = 70$ & $\sigma = 5$
+* Right:  Normalized test scores from 30, 40, & 50 students from an exam $\times$ 1000 simulations
+
+![plot of chunk CLTnrml](assets/fig/CLTnrml-1.png) 
 
 ---
 ## Tools from Stochastic Calculus
@@ -340,4 +364,18 @@ Risk incorporated into price of stock.
 
 1.  The change $\Delta z$ during a small period of time $\Delta t$ is $\Delta z = \epsilon \sqrt(\Delta t)$ where $\epsilon$ is a standard normal distribution $\Phi(0,1)$.
 2.  The values of $\Delta z$ for any two different short intervals of time, $\Delta t$, are independent.
+
+---
+## Acknowledgements
+
+### Ms Johnston
+* for AP Calculus
+
+### Dr McDougall
+
+* for stimulating discussions regarding Cox, Ross, Rubinstein model,
+* introducing a R-programming enviroment, 
+* demonstrating Latex,
+* introducing GitHub, and
+* keeping us at the white board!
 
