@@ -10,3 +10,7 @@ Cairo
 animation
 gridExtra
 gtable
+zoo
+xts
+TTR
+quantmod

@@ -53,7 +53,7 @@ require(gtable)
 
 <div class="centered">
 \begin{equation}
-    e = \lim_{n\to\infty} (1 + n)^{1/n}
+    e = \lim_{n\to\infty} (1 + 1/n)^n
 \end{equation}
 </div>
 
@@ -128,8 +128,7 @@ require(gtable)
 \end{equation}
 </div>
 
-
-* Shape characterized by $\mu = m$ &  $\sigma^2 = s^2$
+* Center of "bell" curve is at $\mu$ and width determined by $\sigma$
 
 ### Standard Normal Distribution
 * Characterized by $\mu = 0$ &  $\sigma^2 = 1$
@@ -178,12 +177,7 @@ dat <- tbl_df(data.frame(
           apply(rnorm40.frame, 1, cfunc, 40),
           apply(rnorm50.frame, 1, cfunc, 50)
     ),
-    size = factor(rep(c("30 Samples", "40 Samples", "50 Samples"), rep(1000, 3)))))
-# dat <- tbl_df(data.frame(
-#     x = c(apply(rnorm30.frame, 1, mean, 30),
-#           apply(rnorm40.frame, 1, mean, 40),
-#           apply(rnorm50.frame, 1, mean, 50)
-#     ),
+    size = factor(rep(c("30 Students", "40 Students", "50 Students"), rep(1000, 3)))))
 #     size = factor(rep(c("30 Students", "40 Students", "50 Students"), rep(1000, 3)))))
 # View(dat)
 pltLLNnorm <- ggplot(dat, aes(x = x, fill = size)) + geom_histogram(binwidth=.3, colour = "black", aes(y = ..density..)) 
@@ -383,7 +377,40 @@ $$ Fv_t = Pv (e^{rt}) $$
 ---
 ## Future Value of Money
 
-* Graphs showing discrete compounding versus continuous compounding
+* [Bank Savings interest rate](http://www.mysavingsdirect.com/MySavingsDirectWeb/en/common/information/LearnMore.jsp) $r = 1.2\%$ per annum
+* Figure shows continuous, daily, monthly, quarterly, and annual compounding for 10 years
+```{r fvMoney, echo=FALSE, warning=FALSE, message=FALSE, fig.height=6, fig.cap="Time Value of Money"}
+aprAnn = 0.125 #https://www.mysavingsdirect.com/MySavingsDirectWeb/en/common/information/LearnMore.jsp
+aprDay = aprAnn / yday(mdy("12/31/2015"))
+aprMnth = aprAnn / 12
+aprQtr = aprAnn / 4
+
+finGrowthTblMnth <- tbl_df(as.data.frame( ymd_hms("2015-01-01 16:00:00", tz = "America/New_York") + months(1:120) - days(1) ))
+names(finGrowthTblMnth) <- "dateClose"
+finGrowthTblMnth <- finGrowthTblMnth%>%
+    mutate(
+        ydayNum = yday(dateClose),
+        month = month(dateClose),
+        years = as.period( (dateClose - ymd_hms("2015-01-01 16:00:00", tz = "America/New_York") ) ) %/% months(12),
+        quarters = as.period( (dateClose - ymd_hms("2015-01-01 16:00:00", tz = "America/New_York") ) ) %/% months(3),
+        months = as.period( (dateClose - ymd_hms("2015-01-01 16:00:00", tz = "America/New_York") ) ) %/% months(1),
+        days = as.period( (dateClose - ymd_hms("2015-01-01 16:00:00", tz = "America/New_York") ) ) %/% days(1),
+        Savings = (532.60 * (1 + aprDay)**(days)),
+        Contin = (532.60 * exp( aprDay * days) ),
+        Mnthly = (532.60 * (1 + aprMnth)**(months)),
+        Qtrly = (532.60 * (1 + aprQtr)**(quarters)),
+        Annul = (532.60 * (1 + aprAnn)**(years))
+        )
+    
+mnyPlt2 <- ggplot() + scale_colour_hue("Compound_Rate")
+mnyPlt2 <- mnyPlt2 + geom_line(data=finGrowthTblMnth, aes(x = dateClose, y = Contin, color = "1_Contin"))
+mnyPlt2 <- mnyPlt2 + geom_line(data=finGrowthTblMnth, aes(x = dateClose, y = Savings, color = "2_Daily"))
+mnyPlt2 <- mnyPlt2 + geom_line(data=finGrowthTblMnth, aes(x = dateClose, y = Mnthly, color = "3_Mnthly"))
+mnyPlt2 <- mnyPlt2 + geom_line(data=finGrowthTblMnth, aes(x = dateClose, y = Qtrly, color = "4_Qtrly"))
+mnyPlt2 <- mnyPlt2 + geom_line(data=finGrowthTblMnth, aes(x = dateClose, y = Annul, color = "5_Annul"))
+mnyPlt2 <- mnyPlt2 + labs(x = "Date", y = "Amount [$]", title = "Money:  Time Value", legend = "Compounding")
+mnyPlt2
+```
 
 ---
 ## Risk Neutral Valuation of a Portfolio
