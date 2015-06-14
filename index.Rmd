@@ -1,6 +1,5 @@
 ---
 title       : Brief Introduction to Pricing Derivatives
-
 subtitle    : Pricing a Call Option with a Two Step Binomial Model
 author      : Robby Twesten & Tristan McDougall 
 job         : RT Financials
@@ -13,7 +12,6 @@ knit        : slidify::knit2slides
 ---
 
 ## Basics
-
 
 ### Tools:  
 1. Programming Environment
@@ -39,31 +37,18 @@ knit        : slidify::knit2slides
 ### Call Option
 #### Selling an option.
 
-
 ---
 
-
 ## Future Value of Money
-
 
 r = rate / time   
 Pv = Present Value of Money  
 Fv = Future Value of Money
 $$ Fv_1 = Pv + r(Pv) $$
 
-
 ---
 
-
-
-
-
-
-
-
-
 ## Future Value of Money
-
 
 r = rate / time   
 Pv = Present Value of Money  
@@ -74,9 +59,6 @@ $$ Fv_1 = Pv + r(Pv) $$
 $$ r = 10\% $$
 $$ Pv = $100 $$
 $$ Fv_1 = ? $$
-
-
-
 
 ---
 
@@ -91,43 +73,25 @@ $$ Fv_1 = Pv + r(Pv) $$
 $$ Fv_1 = $100 + (10\%)($100) $$
 $$ Fv_1 = $110 $$
 
-
 ---
 
-
 ## Future Value of Money
-
-
-
-
-
 
 r = rate / time   
 Pv = Present Value of Money  
 Fv = Future Value of Money
 $$ Fv_1 = Pv + r(Pv) $$
 
-
 ---
 
-
-
-
-
 ## Future Value of Money
-
 
 r = rate / time   
 Pv = Present Value of Money  
 Fv = Future Value of Money
 $$ Fv_1 = Pv + r(Pv) $$
-
 
 $$ Fv_2 = (Fv_1) + r(Fv_1) $$
-
-
-
-
 
 ---
 
@@ -142,17 +106,9 @@ $$ Fv_2 = (Fv_1) + r(Fv_1) $$
 
 $$ Fv_2 = (Pv + r(Pv)) + r(Pv + r(Pv)) $$
 
-
 ---
 
-
-
 ## Future Value of Money
-
-
-
-
-
 
 r = rate / time   
 Pv = Present Value of Money  
@@ -161,25 +117,11 @@ $$ Fv_1 = Pv + r(Pv) $$
 
 $$ Fv_2 = (Fv_1) + r(Fv_1) $$
 
-
 $$ Fv_2 = (Pv + r(Pv)) + r(Pv + r(Pv)) $$
-
-
-
-
-
 
 $$ Fv_2 = Pv(1 + 2r + r^2) $$
 
-
-
-
 $$ Fv_2 = Pv(1+r)^2 $$
-
-
-
-
-
 
 ---
 
@@ -189,23 +131,15 @@ r = rate / time
 Pv = Present Value of Money  
 Fv = Future Value of Money
 $$ Fv_1 = Pv + r(Pv) $$
-
-
 
 $$ Fv_2 = Pv(1+r)^2 $$
 
 $$ Fv_t = Pv(1+r)^t $$
 
-
-
-
 $$ Fv_t = Pv(1+\frac{r}{n})^{nt} $$
-
 
 ### -t is a time step
 ### -n is a unit conversion
-
-
 
 ---
 
@@ -223,10 +157,7 @@ $$ k = \frac{n}{r} $$
 
 $$ n = k*r $$
 
-
 $$ Fv_t = Pv(1+\frac{1}{k})^{krt} $$
-
-
 
 ---
 
@@ -244,8 +175,68 @@ $$ Fv_t = Pv (e^{rt}) $$
 ---
 
 ## Binomial Tree Model
+  
+  
+The Binomial Tree Pricing Model demonstrates options pricing in one discrete time step.
+
+### Risk Neutral Valuation
+
+1. Creates a risk free portfolio for both the buyer and the seller
+2. Greatly simplifies pricing
+
+### Assumptions
+
+1. Value of the portfolio is the same whether the stock price goes up or down.
+2. The expected return on a stock (or any other investment) is the risk-free rate.
+
+---
+
+## Binomial Tree Model
+  
+  
+$S_0 =$ Initial stock Price  
+  
+$u =$ Multiplier when stock price goes up  
+  
+$d =$ Multiplier when stock price goes down  
+  
+$f =$ Value of the option  
+  
+$f_u =$ Value of the option when stock price goes up  
+  
+$f_d =$ Value of the option when stock price goes down  
+  
+$\Delta =$ Number of shares in portfolio  
+
+---
+
+## Binomial Tree Model (Example)  
+  
+  
+  
+$f$ is the option to buy stock for $21  
+  
+$S_0 = 20$  
+  
+$uS_0 = 22$   
+  
+$dS_0 = 18$  
+
+$f_u = 22-21 = 1$    
+  
+$f_d = 0$   
 
 
+---
+
+## Binomial Tree Model
+### Hedging
+   
+   - The elimination of risk.  
+   
+1. To do this in our model we determine a number of shares, $\Delta$, that would make the value of the portfolio if the stock goes down equal to the value of the portfolio if the stock goes up.
+   
+2.In our example this is done by setting $\Delta 22 - 1 =  \Delta 18$  
 
 ---
 
@@ -280,10 +271,6 @@ require(DiagrammeR)
 1. $E[X] = n p$
 2. $Var(X) = n p(1 - p)$
 
-
-
-
-
 ---
 ## Risk Neutral Valuation
 
@@ -302,7 +289,6 @@ Risk incorporated into price of stock.
 
 ---
 ## Risk Free Portfolio (RFP)
-
 
 ### Value of portfolio is same whether stock price goes up or down:
 
@@ -338,10 +324,7 @@ A physical example of a Wiener processes is Brownian motion.
 
 $Var(X) = E[X^2] - (E[X])^2$
 
-
-
 * Two properties are:
-
 1.  The change $\Delta z$ during a small period of time $\Delta t$ is $\Delta z = \epsilon \sqrt(\Delta t)$ where $\epsilon$ is a standard normal distribution $\Phi(0,1)$.
 2.  The values of $\Delta z$ for any two different short intervals of time, $\Delta t$, are independent.
 
@@ -354,4 +337,5 @@ a different test
 ```{r tristan}
 2*2
 ```
+
 
