@@ -44,7 +44,7 @@ knit        : slidify::knit2slides
 
 <div class="centered">
 \begin{equation}
-    e = \lim_{n\to\infty} (1 + n)^{1/n}
+    e = \lim_{n\to\infty} (1 + 1/n)^n
 \end{equation}
 </div>
 
@@ -119,8 +119,7 @@ knit        : slidify::knit2slides
 \end{equation}
 </div>
 
-
-* Shape characterized by $\mu = m$ &  $\sigma^2 = s^2$
+* Center of "bell" curve is at $\mu$ and width determined by $\sigma$
 
 ### Standard Normal Distribution
 * Characterized by $\mu = 0$ &  $\sigma^2 = 1$
@@ -316,7 +315,9 @@ $$ Fv_t = Pv (e^{rt}) $$
 ---
 ## Future Value of Money
 
-* Graphs showing discrete compounding versus continuous compounding
+* [Bank Savings interest rate](http://www.mysavingsdirect.com/MySavingsDirectWeb/en/common/information/LearnMore.jsp) $r = 1.2\%$ per annum
+* Figure shows continuous, daily, monthly, quarterly, and annual compounding for 10 years
+![Time Value of Money](assets/fig/fvMoney-1.png) 
 
 ---
 ## Risk Neutral Valuation of a Portfolio
