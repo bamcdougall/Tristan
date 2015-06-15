@@ -369,6 +369,13 @@ $$ Fv_t = Pv (e^{rt}) $$
 2.  The values of $\Delta z$ for any two different short intervals of time, $\Delta t$, are independent.
 
 ---
+## Google vs Savings Account
+### Date:  1/2/2015 - 6/12/2015
+
+<video   controls loop><source src="assets/fig/stockPricing-.webm" />video of chunk stockPricing</video>
+
+
+---
 ## Acknowledgements
 
 ### Ms Johnston
