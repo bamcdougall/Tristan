@@ -201,6 +201,13 @@ print(pltLLNnorm, vp = vplayout(1, 2))
 ### Ito's Lemma
 * Show definition of Ito's lemma
 
+```{r animationTest, echo=FALSE, fig.height=4, fig.show='animate'}
+for(i in 1:10) {
+plot(rnorm(100))
+}
+
+```
+
 ---
 ## Definitions from Finance
 

@@ -138,6 +138,8 @@ knit        : slidify::knit2slides
 ### Ito's Lemma
 * Show definition of Ito's lemma
 
+<video   controls loop><source src="assets/fig/animationTest-.webm" />video of chunk animationTest</video>
+
 ---
 ## Definitions from Finance
 
