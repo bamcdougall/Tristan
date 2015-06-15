@@ -43,6 +43,7 @@ library(dplyr)
 library(lubridate)
 library(Cairo)
 library(animation)
+library(htmlwidgets)
 ani.options(interval=.6)
 ```
 
@@ -134,18 +135,25 @@ ani.options(interval=.6)
 \end{equation}
 </div>
 
-* Center of "bell" curve is at $\mu$ and width determined by $\sigma$
+* Shape of "bell"" curve determined by density wtih center at $\mu$ and [width](https://en.wikipedia.org/wiki/Full_width_at_half_maximum) $\propto \sigma$
+* Expectation value (average) of x is
+
+<div class="centered">
+\begin{equation}
+   E(x) = \langle x \rangle = \int_{-\infty}^{-\infty} x \frac{1}{\sqrt{2 \pi} \sigma} e^{-(x - \mu)^2/2 \sigma^2} dx
+\end{equation}
+</div>
 
 ### Standard Normal Distribution
-* Characterized by $\mu = 0$ &  $\sigma^2 = 1$
+* Definition: $\mu = 0$ &  $\sigma^2 = 1$
 
 ---
 ## Tools from Probability (3 / 3)
 ### Monte Carlo Data, Normal Distribution, & Cental Limit Theorm
-* Left:  Test scores of 50 students from an exam with $\mu = 70$ & $\sigma = 5$
-* Right:  Normalized test scores from 30, 40, & 50 students from an exam $\times$ 1000 simulations
+* Left:  Simulated scores of 50 students with $\mu = 70$ & $\sigma = 5$
+* Right:  Normalized scores of 30, 40, & 50 students $\times$ 1000 simulations
 
-```{r CLTnrml, echo=FALSE, warning=FALSE, fig.width=12, fig.height=5.5}
+```{r CLTnrml, echo=FALSE, warning=FALSE, fig.width=12, fig.height=5}
 ################################################################################
 ##
 ## This code chunk initializes constants used for generating Monte Carlo data##
@@ -199,6 +207,7 @@ print(plotHistRnorm, vp = vplayout(1, 1))
 print(pltLLNnorm, vp = vplayout(1, 2))
 
 ```
+* figure courtesy of Dr McDougall
 
 ---
 ## Tools from Stochastic Calculus
@@ -206,12 +215,6 @@ print(pltLLNnorm, vp = vplayout(1, 2))
 ### Ito's Lemma
 * Show definition of Ito's lemma
 
-```{r animationTest, echo=FALSE, fig.height=4, fig.show='animate'}
-for(i in 1:10) {
-plot(rnorm(100))
-}
-
-```
 
 ---
 ## Definitions from Finance
@@ -221,16 +224,16 @@ plot(rnorm(100))
 
 
 ### European Option
-* Right to buy (long) or sell (short) an asset (stock) for a strike price at a set time (maturity), for a fee today.
+* Right to buy (long) or sell (short) an asset (stock) at a strike price at a fixed date (maturity), for a fee today.
 
 
 ### Call Option
-*  The option to buy a stock in the future at a fixed price.
-* Two sides:  a buyer and a seller
+* The option to buy a stock in the future at a fixed price.
+* Two sides:  buyer and seller
 
 ### Put Option
-* The option to sell a stock in the fture at a fixed price.
-* Two sides:  a buyer and a seller
+* The option to sell a stock in the future at a fixed price.
+* Two sides:  buyer and seller
 
 
 ---
@@ -238,9 +241,9 @@ plot(rnorm(100))
 ## Future Value of Money
 
 r = risk free interest rate   
-Pv = Present Value of Money  
-Fv = Future Value of Money
-$$ Fv_1 = Pv + r(Pv) $$
+PV = Present Value of Money  
+FV = Future Value of Money
+$$ FV_1 = PV + r(PV) $$
 
 ---
 
@@ -248,36 +251,36 @@ $$ Fv_1 = Pv + r(Pv) $$
 
 
 r = risk free interest rate   
-Pv = Present Value of Money  
-Fv = Future Value of Money
-$$ Fv_1 = Pv + r(Pv) $$
+PV = Present Value of Money  
+FV = Future Value of Money
+$$ FV_1 = PV + r(PV) $$
   
 ### Example:
 $$ r = 10\% $$
-$$ Pv = $100 $$
-$$ Fv_1 = ? $$
+$$ PV = $100 $$
+$$ FV_1 = ? $$
 
 ---
 
 ## Future Value of Money
 
 r = risk free interest rate   
-Pv = Present Value of Money  
-Fv = Future Value of Money
-$$ Fv_1 = Pv + r(Pv) $$
+PV = Present Value of Money  
+FV = Future Value of Money
+$$ FV_1 = PV + r(PV) $$
   
 ### Example:
-$$ Fv_1 = $100 + (10\%)($100) $$
-$$ Fv_1 = $110 $$
+$$ FV_1 = $100 + (10\%)($100) $$
+$$ FV_1 = $110 $$
 
 ---
 
 ## Future Value of Money
 
 r = risk free interest rate   
-Pv = Present Value of Money  
-Fv = Future Value of Money
-$$ Fv_1 = Pv + r(Pv) $$
+PV = Present Value of Money  
+FV = Future Value of Money
+$$ FV_1 = PV + r(PV) $$
 
 ---
 
@@ -285,71 +288,71 @@ $$ Fv_1 = Pv + r(Pv) $$
 
 
 r = risk free interest rate   
-Pv = Present Value of Money  
-Fv = Future Value of Money
-$$ Fv_1 = Pv + r(Pv) $$
+PV = Present Value of Money  
+FV = Future Value of Money
+$$ FV_1 = PV + r(PV) $$
 
 
-$$ Fv_2 = (Fv_1) + r(Fv_1) $$
-
----
-
-## Future Value of Money
-
-r = risk free interest rate   
-Pv = Present Value of Money  
-Fv = Future Value of Money
-$$ Fv_1 = Pv + r(Pv) $$
-
-$$ Fv_2 = (Fv_1) + r(Fv_1) $$
-
-$$ Fv_2 = (Pv + r(Pv)) + r(Pv + r(Pv)) $$
+$$ FV_2 = (FV_1) + r(FV_1) $$
 
 ---
 
 ## Future Value of Money
 
 r = risk free interest rate   
-Pv = Present Value of Money  
-Fv = Future Value of Money
-$$ Fv_1 = Pv + r(Pv) $$
+PV = Present Value of Money  
+FV = Future Value of Money
+$$ FV_1 = PV + r(PV) $$
 
-$$ Fv_2 = (Fv_1) + r(Fv_1) $$
+$$ FV_2 = (FV_1) + r(FV_1) $$
 
-
-$$ Fv_2 = (Pv + r(Pv)) + r(Pv + r(Pv)) $$
-
-
-
-
-
-
-$$ Fv_2 = Pv(1 + 2r + r^2) $$
-
-
-
-
-$$ Fv_2 = Pv(1+r)^2 $$
+$$ FV_2 = (PV + r(PV)) + r(PV + r(PV)) $$
 
 ---
 
 ## Future Value of Money
 
 r = risk free interest rate   
-Pv = Present Value of Money  
-Fv = Future Value of Money
-$$ Fv_1 = Pv + r(Pv) $$
+PV = Present Value of Money  
+FV = Future Value of Money
+$$ FV_1 = PV + r(PV) $$
+
+$$ FV_2 = (FV_1) + r(FV_1) $$
+
+
+$$ FV_2 = (PV + r(PV)) + r(PV + r(PV)) $$
 
 
 
-$$ Fv_2 = Pv(1+r)^2 $$
-
-$$ Fv_t = Pv(1+r)^t $$
 
 
 
+$$ FV_2 = PV(1 + 2r + r^2) $$
 
-$$ Fv_t = Pv(1+\frac{r}{n})^{nt} $$
+
+
+
+$$ FV_2 = PV(1+r)^2 $$
+
+---
+
+## Future Value of Money
+
+r = risk free interest rate   
+PV = Present Value of Money  
+FV = Future Value of Money
+$$ FV_1 = PV + r(PV) $$
+
+
+
+$$ FV_2 = PV(1+r)^2 $$
+
+$$ FV_t = PV(1+r)^t $$
+
+
+
+
+$$ FV_t = PV(1+\frac{r}{n})^{nt} $$
 
 
 ### -t is a time step
@@ -360,39 +363,39 @@ $$ Fv_t = Pv(1+\frac{r}{n})^{nt} $$
 ## Future Value of Money
 
 r = risk free interest rate   
-Pv = Present Value of Money  
-Fv = Future Value of Money  
+PV = Present Value of Money  
+FV = Future Value of Money  
 n = Unit Conversion  
 t = Time Conversion
 
-$$ Fv_t = Pv(1+\frac{r}{n})^{nt} $$
+$$ FV_t = PV(1+\frac{r}{n})^{nt} $$
 
 $$ k = \frac{n}{r} $$
 
 $$ n = k*r $$
 
 
-$$ Fv_t = Pv(1+\frac{1}{k})^{krt} $$
+$$ FV_t = PV(1+\frac{1}{k})^{krt} $$
 
 ---
 
 ## Future Value of Money
 r = risk free interest rate   
-Pv = Present Value of Money  
-Fv = Future Value of Money  
+PV = Present Value of Money  
+FV = Future Value of Money  
 
 $$  e = \lim_{x\to\infty} (1+\frac{1}{x})^x $$
 
-$$ Fv_t = Pv(\lim_{k\to\infty} (1+\frac{1}{k})^{k})^{rt} $$
+$$ FV_t = PV(\lim_{k\to\infty} (1+\frac{1}{k})^{k})^{rt} $$
 
-$$ Fv_t = Pv (e^{rt}) $$
+$$ FV_t = PV (e^{rt}) $$
 
 ---
 ## Future Value of Money
 
 * [Bank Savings interest rate](http://www.mysavingsdirect.com/MySavingsDirectWeb/en/common/information/LearnMore.jsp) $r = 1.25\%$ per annum. Starting balance = [$532.60](http://www.google.com/finance?q=NASDAQ%3AGOOGL&ei=fsF9VfG5JonSjAGE84J4)
 * Figure shows continuous, daily, monthly, quarterly, and annual compounding for 10 years
-```{r fvMoney, echo=FALSE, warning=FALSE, message=FALSE, fig.height=6, fig.cap="Time Value of Money"}
+```{r fvMoney, echo=FALSE, warning=FALSE, message=FALSE, fig.height=5, fig.width=12, fig.cap="Time Value of Money"}
 aprAnn = 0.0125 #https://www.mysavingsdirect.com/MySavingsDirectWeb/en/common/information/LearnMore.jsp
 aprDay = aprAnn / yday(mdy("12/31/2015"))
 aprMnth = aprAnn / 12
@@ -424,58 +427,224 @@ mnyPlt2 <- mnyPlt2 + geom_line(data=finGrowthTblMnth, aes(x = dateClose, y = Ann
 mnyPlt2 <- mnyPlt2 + labs(x = "Date", y = "Amount [$]", title = "Money:  Time Value", legend = "Compounding")
 mnyPlt2
 ```
+* Speculation: bank income is area between continuous compounding curve and client's compounding curve
+* figure courtesy of Dr McDougall
 
 ---
 ## Risk Neutral Valuation of a Portfolio
 
 ### Assumptions
-1. The expected return on a stock (or any other investment) is the risk-free rate.
-2. The discount rate used for the expected payoff on an option (or any other instrument) is the risk-free rate.
+1. Expected return on a stock (or any other instrument) is the risk-free rate $e^{rt}$.
+2. Discount rate for payoff on an option (or any other instrument) is the risk-free rate $e^{-rt}$.
 
 ### Purpose
 1. Risk Neutral Valuation (RNV) simplifies pricing.
 
 * All returns and discounts are at risk-free rate.
 
-2. Relationship between stock and derivative is the same regardless of risk.
+2. **Relationship between stock and derivative is the same regardless of risk**.
 
 * Risk incorporated into price of stock.
 
 ---
 
-## Binomial Tree Model
+## Portfolio Management (1 / 4)
 
----
+### Generate RNV Portfolio using [Binary Tree Model](https://en.wikipedia.org/wiki/Binomial_options_pricing_model)
+1. Purchasing $\Delta$ shares of stock at price $S_o$
+2. Short a call option on same stock with value $f$
 
-## Portfolio Management
-
-### Risk Free Portfolio (RFP)
-* Value of portfolio is same whether stock price goes up or down:
+* Value of RNV portfolio is same whether stock price goes up or down
 
 \begin{equation}
     (\Delta S_o) u - f_u = (\Delta S_o) d - f_d
 \end{equation}
+where u is the multiplier  for increase and d is multiplier for decrease
 
-### $\Delta$ Hedge
-* Determine number of shares $\Delta$ required for creating a RFP
+### $\Delta$ Hedge for RNV Portfolio
+* From equality, $\Delta$ required for creating a RNV Portfolio is
 
 \begin{equation}
     \Delta = \frac{f_u - f_d}{S_o (u-d)}
 \end{equation}
 
 ---
-## Pricing Slides (to be done)
+## Portfolio Management (2 / 4)
 
-* Integration of Stock price $\Delta S / S$ etc.
-* Two properties are:
+### The figure depicts a RNV portfolio generated from Binary Tree Model
+* figure courtesy of Dr McDougall
 
-1.  The change $\Delta z$ during a small period of time $\Delta t$ is $\Delta z = \epsilon \sqrt(\Delta t)$ where $\epsilon$ is a standard normal distribution $\Phi(0,1)$.
+```{r echo=FALSE, warning=FALSE,cache=FALSE,results='asis'}
+# <style type="text/css">
+#     body {background:none transparent;
+#           }
+# </style>
+
+fff <- DiagrammeR::grViz("
+                        digraph {
+                        
+                        # graph attributes
+                        graph [overlap = true]
+                        
+                        # node attributes
+                        node [shape = box,
+                        fontname = Helvetica,
+                        color = blue]
+                        
+                        # edge attributes
+                        edge [color = gray]
+                        
+                        # node statements
+                        A; B; C; D; E; F
+                        
+                        A [ label = 'S_o \n f']
+                        B [ label = 'd S_o \n f_d']
+                        C [ label = 'u S_o \n f_u']
+                        D [ label = 'd d S_o \n f_dd']
+                        E [ label = 'u d S_o \n f_ud']
+                        F [ label = 'u u S_o \n f_uu']
+                        
+                        #   # node attributes
+                        #   node [shape = circle,
+                        #         fixedsize = true,
+                        #         width = 0.9]
+                        # 
+                        #   # node statements
+                        #   1; 2; 3; 4; 5; 6; 7; 8
+                        # 
+                        #   # edge statements
+                        A->B; A->C
+                        B->D; B->E
+                        C->F; C->E
+                        #   A->1; B->2                   // gray
+                        #   B->3 [color = red]           // red
+                        #   B->4                         // gray
+                        #   C->A [color = green]         // green
+                        #   1->D; E->A; 2->4; 1->5; 1->F // gray
+                        #   E->6; 4->6; 5->7; 6->7       // gray
+                        #   3->8 [color = blue]          // blue
+                        }
+                        ", width=800, height=350, engine="dot")
+
+saveWidget(fff, 'diagram.html')
+cat('<iframe src="diagram.html" width=100% height=100% allowtransparency="true"> </iframe>')
+```
+
+
+---
+## Portfolio Management (3 / 4)
+
+* PV of RNV is discounted FV, i.e.
+
+<div class="centered">
+\begin{equation}
+    (\Delta S_o)  - f = e^{-r t} \left[ (\Delta S_o) u - f_u \right]
+\end{equation}
+</div>
+
+* Solving for f estimates PV of call option, so
+\begin{equation}
+\vdots
+\end{equation}
+
+<div class="centered">
+\begin{equation}
+   f = e^{-r t} \left[ p f_u + (1 - p) f_d \right]
+\end{equation}
+</div>
+where
+<div class="centered">
+\begin{equation}
+   p = \frac{e^{r t} - d}{u - d}
+\end{equation}
+</div>
+
+* **NOTE**:  f is discounted expectation value of option's FV with a binomial density (*coin flip*)
+
+---
+## Portfolio Management (4 / 4)
+
+### From Probability Theory, variance is proportional to $\Delta t$, so
+
+<div class="centered">
+\begin{equation}
+    \sigma^2 \Delta t = \langle S(t)^2 \rangle - \langle S(t) \rangle ^2
+\end{equation}
+</div>
+
+\begin{equation}
+\vdots
+\end{equation}
+
+<div class="centered">
+\begin{equation}
+   \sigma^2 \Delta t = \left[ p u^2 + (1-p) d^2 \right] - \left[ \left( p u + (1-p) d \right)^2 \right]
+\end{equation}
+</div>
+
+\begin{equation}
+\vdots
+\end{equation}
+
+
+<div class="centered">
+\begin{equation}
+   \sigma^2 \Delta t = (u + d) e^{\mu t} - du - e^{2 \mu t}
+\end{equation}
+</div>
+
+* with a Taylor Expansion, one validates a solution for u & d is $u = e^{\sigma \sqrt{\Delta t}}$ & $d = e^{- \sigma \sqrt{\Delta t}}$
+
+
+
+---
+## Pricing a Stock
+
+### Current Status
+* Given a RNV Portfolio, binary tree model prices a call option for a $\Delta$ Hedge
+* The binary tree model is transformed from *RNV world* to *market world* by incorporating market return $\mu$ and volatility $\sigma^2 \Delta t$ in price multipliers $u$ & $d$
+* Remaining action is determining time dependence of stock price $S$
+* Two necessary properties are:
+
+1.  The change $\Delta z$ during a small period of time $\Delta t$ is $\Delta z = \epsilon \sqrt(\Delta t)$ where $\epsilon$ is a standard normal distribution.
 2.  The values of $\Delta z$ for any two different short intervals of time, $\Delta t$, are independent.
 
 ---
-## Google vs Savings Account
-### Date:  1/2/2015 - 6/12/2015
+## Time Dependence of Stock Price $S$
 
+<div class="centered">
+\begin{equation}
+    d S = \mu S d t + \sigma S \epsilon \sqrt{dt}
+\end{equation}
+</div>
+
+* Neglecting volatility, $S(t) = S_o e^{\mu t}$
+* Solving numerically,
+\begin{equation}
+\vdots
+\end{equation}
+
+<div class="centered">
+\begin{equation}
+     \Delta S = \mu S \Delta t + \sigma S \epsilon \sqrt{\Delta t}
+\end{equation}
+</div>
+
+\begin{equation}
+\vdots
+\end{equation}
+
+
+<div class="centered">
+\begin{equation}
+    S_{i + 1} = S_i + \mu S_i \Delta t + \sigma S_i \epsilon \sqrt{\Delta t}
+\end{equation}
+</div>
+
+
+---
+## Google vs Savings Account
+### Numerical approximation to Google's stock price (Dates:  1/2/2015 - 6/12/2015)
 ```{r stockPricing, echo=FALSE, message=FALSE, warning=FALSE, fig.height=6, fig.width=12, fig.show='animate'}
 ################################################################################
 ##
@@ -547,7 +716,25 @@ for(j in 1:30) {
     print(mnyPlt)
 }
 ```
+* Animation provided by Dr McDougall
 
+---
+## Conclusions
+
+### Finance utilizes multiple branches of mathematics
+* from Algebra to Stochastic Calculus
+
+### Future value of our money depends on $r$ and short compounding intervals
+
+### $\Delta$ Hedging demonstrates earning income at market rate $\mu$ with negligible risk
+* ratio between Google's rate of return and best available bank rate is $\mu / r =$ ```r round(mu_daily / aprDay, 2)```
+* high frquency trading rate is of order $1 \mu s$ vs daily, $\ldots$, or annual compounding of banks
+
+### Binary Tree approximation enables pricing of call option for $\Delta$ Hedging.
+
+### Binary Tree approximation with Wiener Process enables estimation of stock price
+* Wiener process shows risk of stochastic processes in pricing model
+* $\Delta$ Hedging mitigates inherent risk due of stochastic processes
 
 ---
 ## Acknowledgements
@@ -562,4 +749,7 @@ for(j in 1:30) {
 * demonstrating Latex,
 * introducing GitHub, and
 * keeping us at the white board!
+
+### References
+* Hull, J.C., **Options, Futures, And Other Derivatives**, 8th ed., Pearson Education Limited, England (2012)
 
