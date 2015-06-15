@@ -138,6 +138,8 @@ knit        : slidify::knit2slides
 ### Ito's Lemma
 * Show definition of Ito's lemma
 
+<video   controls loop><source src="assets/fig/animationTest-.webm" />video of chunk animationTest</video>
+
 ---
 ## Definitions from Finance
 
@@ -315,7 +317,7 @@ $$ Fv_t = Pv (e^{rt}) $$
 ---
 ## Future Value of Money
 
-* [Bank Savings interest rate](http://www.mysavingsdirect.com/MySavingsDirectWeb/en/common/information/LearnMore.jsp) $r = 1.2\%$ per annum; Starting balance = [$532.60](http://www.google.com/finance?q=NASDAQ%3AGOOGL&ei=fsF9VfG5JonSjAGE84J4)
+* [Bank Savings interest rate](http://www.mysavingsdirect.com/MySavingsDirectWeb/en/common/information/LearnMore.jsp) $r = 1.25\%$ per annum. Starting balance = [$532.60](http://www.google.com/finance?q=NASDAQ%3AGOOGL&ei=fsF9VfG5JonSjAGE84J4)
 * Figure shows continuous, daily, monthly, quarterly, and annual compounding for 10 years
 ![Time Value of Money](assets/fig/fvMoney-1.png) 
 
@@ -329,11 +331,11 @@ $$ Fv_t = Pv (e^{rt}) $$
 ### Purpose
 1. Risk Neutral Valuation (RNV) simplifies pricing.
 
-All returns and discounts are at risk-free rate.
+* All returns and discounts are at risk-free rate.
 
 2. Relationship between stock and derivative is the same regardless of risk.
 
-Risk incorporated into price of stock.
+* Risk incorporated into price of stock.
 
 ---
 

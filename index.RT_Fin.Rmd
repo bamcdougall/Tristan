@@ -1,0 +1,357 @@
+---
+title       : Brief Introduction to Pricing Derivatives
+
+subtitle    : Pricing a Call Option with a Two Step Binomial Model
+author      : Robby Twesten & Tristan McDougall 
+job         : RT Financials
+framework   : io2012     # {io2012, html5slides, shower, dzslides, ...}
+highlighter : highlight.js  # {highlight.js, prettify, highlight}
+hitheme     : tomorrow      # 
+widgets     : [mathjax, bootstrap]            # {mathjax, quiz, bootstrap}
+mode        : selfcontained # {standalone, draft}
+knit        : slidify::knit2slides
+---
+
+## Basics
+
+
+### Tools:  
+1. Programming Environment
+2. Probability
+3. Algebra
+4. Calculus
+
+### Finance Theory:  
+1. Future Value of Money
+2. Binomial Tree Pricing Model for Option
+
+
+--- .class #id
+
+## Definitions
+
+### Stochastic Process
+#### An observation whose value is random with respect to time.
+
+### Option
+#### The rights to buy an asset for a set price at a set time, for a small fee today.
+
+### Call Option
+#### Selling an option.
+
+
+---
+
+
+## Future Value of Money
+
+
+r = rate / time   
+Pv = Present Value of Money  
+Fv = Future Value of Money
+$$ Fv_1 = Pv + r(Pv) $$
+
+
+---
+
+
+
+
+
+
+
+
+
+## Future Value of Money
+
+
+r = rate / time   
+Pv = Present Value of Money  
+Fv = Future Value of Money
+$$ Fv_1 = Pv + r(Pv) $$
+  
+### Example:
+$$ r = 10\% $$
+$$ Pv = $100 $$
+$$ Fv_1 = ? $$
+
+
+
+
+---
+
+## Future Value of Money
+
+r = rate / time   
+Pv = Present Value of Money  
+Fv = Future Value of Money
+$$ Fv_1 = Pv + r(Pv) $$
+  
+### Example:
+$$ Fv_1 = $100 + (10\%)($100) $$
+$$ Fv_1 = $110 $$
+
+
+---
+
+
+## Future Value of Money
+
+
+
+
+
+
+r = rate / time   
+Pv = Present Value of Money  
+Fv = Future Value of Money
+$$ Fv_1 = Pv + r(Pv) $$
+
+
+---
+
+
+
+
+
+## Future Value of Money
+
+
+r = rate / time   
+Pv = Present Value of Money  
+Fv = Future Value of Money
+$$ Fv_1 = Pv + r(Pv) $$
+
+
+$$ Fv_2 = (Fv_1) + r(Fv_1) $$
+
+
+
+
+
+---
+
+## Future Value of Money
+
+r = rate / time   
+Pv = Present Value of Money  
+Fv = Future Value of Money
+$$ Fv_1 = Pv + r(Pv) $$
+
+$$ Fv_2 = (Fv_1) + r(Fv_1) $$
+
+$$ Fv_2 = (Pv + r(Pv)) + r(Pv + r(Pv)) $$
+
+
+---
+
+
+
+## Future Value of Money
+
+
+
+
+
+
+r = rate / time   
+Pv = Present Value of Money  
+Fv = Future Value of Money
+$$ Fv_1 = Pv + r(Pv) $$
+
+$$ Fv_2 = (Fv_1) + r(Fv_1) $$
+
+
+$$ Fv_2 = (Pv + r(Pv)) + r(Pv + r(Pv)) $$
+
+
+
+
+
+
+$$ Fv_2 = Pv(1 + 2r + r^2) $$
+
+
+
+
+$$ Fv_2 = Pv(1+r)^2 $$
+
+
+
+
+
+
+---
+
+## Future Value of Money
+
+r = rate / time   
+Pv = Present Value of Money  
+Fv = Future Value of Money
+$$ Fv_1 = Pv + r(Pv) $$
+
+
+
+$$ Fv_2 = Pv(1+r)^2 $$
+
+$$ Fv_t = Pv(1+r)^t $$
+
+
+
+
+$$ Fv_t = Pv(1+\frac{r}{n})^{nt} $$
+
+
+### -t is a time step
+### -n is a unit conversion
+
+
+
+---
+
+## Future Value of Money
+
+r = rate / time   
+Pv = Present Value of Money  
+Fv = Future Value of Money  
+n = Unit Conversion  
+t = Time Conversion
+
+$$ Fv_t = Pv(1+\frac{r}{n})^{nt} $$
+
+$$ k = \frac{n}{r} $$
+
+$$ n = k*r $$
+
+
+$$ Fv_t = Pv(1+\frac{1}{k})^{krt} $$
+
+
+
+---
+
+## Future Value of Money
+r = rate / time   
+Pv = Present Value of Money  
+Fv = Future Value of Money  
+
+$$  e = \lim_{x\to\infty} (1+\frac{1}{x})^x $$
+
+$$ Fv_t = Pv(\lim_{k\to\infty} (1+\frac{1}{k})^{k})^{rt} $$
+
+$$ Fv_t = Pv (e^{rt}) $$
+
+---
+
+## Binomial Tree Model
+
+
+
+---
+
+## Integrated Development Environment (IDE)
+
+### R:
+* Open Source Code & Shared Libraries
+```{r echo=FALSE, warning=FALSE, results='hide', message=FALSE}
+require(stringr)
+require(slidify)
+require(knitr)
+require(DiagrammeR)
+```
+* Plotting, Typesetting, & Slide Presentations
+
+### Version Control
+ 1. [Git](https://www.git-scm.com) invented by Linus Torvalds (open source Linux)
+ 2. [Git Hub](https://github.com/RobertTwesten/Tristan) distributed version control ([used by Google](https://github.com/google))
+ 
+---
+
+
+
+---
+
+
+
+---
+## Tools from Probability
+
+### Binomial Distribution
+1. $E[X] = n p$
+2. $Var(X) = n p(1 - p)$
+
+
+
+
+
+---
+## Risk Neutral Valuation
+
+### Assumptions
+1. The expected return on a stock (or any other investment) is the risk-free rate.
+2. The discount rate used for the expected payoff on an option (or any other instrument) is the risk-free rate.
+
+### Purpose
+1. Risk Neutral Valuation (RNV) simplifies pricing.
+
+All returns and discounts are at risk-free rate.
+
+2. Relationship between stock and derivative is the same regardless of risk.
+
+Risk incorporated into price of stock.
+
+---
+## Risk Free Portfolio (RFP)
+
+
+### Value of portfolio is same whether stock price goes up or down:
+
+\begin{equation}
+    (\Delta S_o) u - f_u = (\Delta S_o) d - f_d
+\end{equation}
+
+### $\Delta$ Hedge
+### Determine number of shares required for RFP
+
+\begin{equation}
+    \Delta = \frac{f_u - f_d}{S_o (u-d)}
+\end{equation}
+
+---
+
+## Stochastic Processes
+
+### Stochastic processes are observations whose value is random with respect to time.
+
+### Markov Process
+* Markov process with respect to stock price implies that future price only depends on current price.
+* Distribution is normal
+
+Means are additive and variances are additive
+
+---
+
+## Wiener Process
+* Distribution is standard normal, i.e. mean = 0 and variance = 1.
+
+A physical example of a Wiener processes is Brownian motion.
+
+$Var(X) = E[X^2] - (E[X])^2$
+
+
+
+* Two properties are:
+
+1.  The change $\Delta z$ during a small period of time $\Delta t$ is $\Delta z = \epsilon \sqrt(\Delta t)$ where $\epsilon$ is a standard normal distribution $\Phi(0,1)$.
+2.  The values of $\Delta z$ for any two different short intervals of time, $\Delta t$, are independent.
+
+---
+
+```{r robby}
+1+1
+```
+a different test
+```{r tristan}
+2*2
+```
+

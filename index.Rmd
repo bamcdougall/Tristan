@@ -201,6 +201,13 @@ print(pltLLNnorm, vp = vplayout(1, 2))
 ### Ito's Lemma
 * Show definition of Ito's lemma
 
+```{r animationTest, echo=FALSE, fig.height=4, fig.show='animate'}
+for(i in 1:10) {
+plot(rnorm(100))
+}
+
+```
+
 ---
 ## Definitions from Finance
 
@@ -378,10 +385,10 @@ $$ Fv_t = Pv (e^{rt}) $$
 ---
 ## Future Value of Money
 
-* [Bank Savings interest rate](http://www.mysavingsdirect.com/MySavingsDirectWeb/en/common/information/LearnMore.jsp) $r = 1.2\%$ per annum; Starting balance = [$532.60](http://www.google.com/finance?q=NASDAQ%3AGOOGL&ei=fsF9VfG5JonSjAGE84J4)
+* [Bank Savings interest rate](http://www.mysavingsdirect.com/MySavingsDirectWeb/en/common/information/LearnMore.jsp) $r = 1.25\%$ per annum. Starting balance = [$532.60](http://www.google.com/finance?q=NASDAQ%3AGOOGL&ei=fsF9VfG5JonSjAGE84J4)
 * Figure shows continuous, daily, monthly, quarterly, and annual compounding for 10 years
 ```{r fvMoney, echo=FALSE, warning=FALSE, message=FALSE, fig.height=6, fig.cap="Time Value of Money"}
-aprAnn = 0.125 #https://www.mysavingsdirect.com/MySavingsDirectWeb/en/common/information/LearnMore.jsp
+aprAnn = 0.0125 #https://www.mysavingsdirect.com/MySavingsDirectWeb/en/common/information/LearnMore.jsp
 aprDay = aprAnn / yday(mdy("12/31/2015"))
 aprMnth = aprAnn / 12
 aprQtr = aprAnn / 4
@@ -392,10 +399,10 @@ finGrowthTblMnth <- finGrowthTblMnth%>%
     mutate(
         ydayNum = yday(dateClose),
         month = month(dateClose),
-        years = as.period( (dateClose - ymd_hms("2015-01-01 16:00:00", tz = "America/New_York") ) ) %/% months(12),
-        quarters = as.period( (dateClose - ymd_hms("2015-01-01 16:00:00", tz = "America/New_York") ) ) %/% months(3),
-        months = as.period( (dateClose - ymd_hms("2015-01-01 16:00:00", tz = "America/New_York") ) ) %/% months(1),
-        days = as.period( (dateClose - ymd_hms("2015-01-01 16:00:00", tz = "America/New_York") ) ) %/% days(1),
+        years = as.period( (dateClose - ymd_hms("2015-01-02 16:00:00", tz = "America/New_York") ) ) %/% months(12),
+        quarters = as.period( (dateClose - ymd_hms("2015-01-02 16:00:00", tz = "America/New_York") ) ) %/% months(3),
+        months = as.period( (dateClose - ymd_hms("2015-01-02 16:00:00", tz = "America/New_York") ) ) %/% months(1),
+        days = as.period( (dateClose - ymd_hms("2015-01-02 16:00:00", tz = "America/New_York") ) ) %/% days(1),
         Savings = (532.60 * (1 + aprDay)**(days)),
         Contin = (532.60 * exp( aprDay * days) ),
         Mnthly = (532.60 * (1 + aprMnth)**(months)),
@@ -423,11 +430,11 @@ mnyPlt2
 ### Purpose
 1. Risk Neutral Valuation (RNV) simplifies pricing.
 
-All returns and discounts are at risk-free rate.
+* All returns and discounts are at risk-free rate.
 
 2. Relationship between stock and derivative is the same regardless of risk.
 
-Risk incorporated into price of stock.
+* Risk incorporated into price of stock.
 
 ---
 
