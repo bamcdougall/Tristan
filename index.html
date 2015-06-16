@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Brief Introduction to Pricing Derivatives</title>
+  <title>Derivative and Stock Pricing</title>
   <meta charset="utf-8">
-  <meta name="description" content="Brief Introduction to Pricing Derivatives">
-  <meta name="author" content="Robert Twesten &amp; Tristan Dillman McDougall">
+  <meta name="description" content="Derivative and Stock Pricing">
+  <meta name="author" content="B.A. McDougall">
   <meta name="generator" content="slidify" />
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta http-equiv="X-UA-Compatible" content="chrome=1">
@@ -33,9 +33,9 @@
     <!-- LOGO SLIDE -->
         <slide class="title-slide segue nobackground">
   <hgroup class="auto-fadein">
-    <h1>Brief Introduction to Pricing Derivatives</h1>
-    <h2>Pricing a Call Option with a Two Step Binomial Model</h2>
-    <p>Robby Twesten &amp; Tristan McDougall<br/>RT Financials</p>
+    <h1>Derivative and Stock Pricing</h1>
+    <h2>Binomial Tree Model and Wiener Process</h2>
+    <p>B.A. McDougall<br/>NSCI Consulting</p>
   </hgroup>
   <article></article>  
 </slide>
@@ -60,6 +60,7 @@
 <ol>
 <li>Future Value of Money</li>
 <li>Binomial Tree Pricing Model for Option</li>
+<li>Pricing a Stock within a Wiener Process</li>
 </ol>
 
 <h3>Conclusions</h3>
@@ -161,7 +162,7 @@
 
 <div class="centered">
 \begin{equation}
-   \sigma^2  =  E[x^2] - E[x]^2
+   \sigma^2  =  \langle x^2 \rangle - \langle x \rangle^2
 \end{equation}
 </div>
 
@@ -209,8 +210,8 @@
 f(x) = \frac{1}{\sqrt{2 \pi} \sigma} e^{-(x - \mu)^2/2 \sigma^2}
 \end{equation}
 </div></li>
-<li><p>Shape of &quot;bell&quot;&quot; curve determined by density wtih center at \(\mu\) and <a href="https://en.wikipedia.org/wiki/Full_width_at_half_maximum">width</a> \(\propto \sigma\)</p></li>
-<li><p>Expectation value (average) of x is</p></li>
+<li><p>Lineshape of density centered at \(\mu\) with <a href="https://en.wikipedia.org/wiki/Full_width_at_half_maximum">FWHM</a> \(= 2\sqrt{2 ln2} \sigma\)</p></li>
+<li><p>Expectation value of x is</p></li>
 </ul>
 
 <div class="centered">
@@ -234,17 +235,17 @@ f(x) = \frac{1}{\sqrt{2 \pi} \sigma} e^{-(x - \mu)^2/2 \sigma^2}
     <h2>Tools from Probability (3 / 3)</h2>
   </hgroup>
   <article data-timings="">
-    <h3>Monte Carlo Data, Normal Distribution, &amp; Cental Limit Theorm</h3>
+    <h3>Monte Carlo Data, Binomial Distribution, &amp; Cental Limit Theorm</h3>
 
 <ul>
-<li>Left:  Simulated scores of 50 students with \(\mu = 70\) &amp; \(\sigma = 5\)</li>
-<li>Right:  Normalized scores of 30, 40, &amp; 50 students \(\times\) 1000 simulations</li>
+<li>Left, mid, and right panels show \(2\), \(2^8\), and \(2^{16}\) samples from 1000 simulations</li>
+<li>Data are normalized.  Solid line shows density for standard normal.</li>
 </ul>
 
-<p><img src="assets/fig/CLTnrml-1.png" alt="plot of chunk CLTnrml"> </p>
+<p><video   controls loop><source src="assets/fig/CLTbinom-.webm" />video of chunk CLTbinom</video></p>
 
 <ul>
-<li>figure courtesy of Dr McDougall</li>
+<li>In limit, binomial distribution can be approximated by normal distribution</li>
 </ul>
 
   </article>
@@ -500,7 +501,6 @@ FV = Future Value of Money  </p>
 <li>Figure shows continuous, daily, monthly, quarterly, and annual compounding for 10 years
 <img src="assets/fig/fvMoney-1.png" alt="Time Value of Money"> </li>
 <li>Speculation: bank income is area between continuous compounding curve and client&#39;s compounding curve</li>
-<li>figure courtesy of Dr McDougall</li>
 </ul>
 
   </article>
@@ -582,10 +582,6 @@ where u is the multiplier  for increase and d is multiplier for decrease</p>
   </hgroup>
   <article data-timings="">
     <h3>The figure depicts a RNV portfolio generated from Binary Tree Model</h3>
-
-<ul>
-<li>figure courtesy of Dr McDougall</li>
-</ul>
 
 <iframe src="diagram.html" width=100% height=100% allowtransparency="true"> </iframe>
 
@@ -749,10 +745,6 @@ where u is the multiplier  for increase and d is multiplier for decrease</p>
 
 <p><video   controls loop><source src="assets/fig/stockPricing-.webm" />video of chunk stockPricing</video></p>
 
-<ul>
-<li>Animation provided by Dr McDougall</li>
-</ul>
-
   </article>
   <!-- Presenter Notes -->
 </slide>
@@ -795,21 +787,7 @@ where u is the multiplier  for increase and d is multiplier for decrease</p>
     <h2>Acknowledgements</h2>
   </hgroup>
   <article data-timings="">
-    <h3>Ms Johnston</h3>
-
-<ul>
-<li>for AP Calculus</li>
-</ul>
-
-<h3>Dr McDougall</h3>
-
-<ul>
-<li>for stimulating discussions regarding Cox, Ross, Rubinstein model,</li>
-<li>introducing a R-programming enviroment, </li>
-<li>demonstrating Latex,</li>
-<li>introducing GitHub, and</li>
-<li>keeping us at the white board!</li>
-</ul>
+    <h3>Tristan Dillman McDougall &amp; Robert Twesten for stimulating discussions</h3>
 
 <h3>References</h3>
 

@@ -1,8 +1,8 @@
 ---
-title       : Brief Introduction to Pricing Derivatives
-subtitle    : Pricing a Call Option with a Two Step Binomial Model
-author      : Robby Twesten & Tristan McDougall 
-job         : RT Financials
+title       : Derivative and Stock Pricing
+subtitle    : Binomial Tree Model and Wiener Process
+author      : B.A. McDougall 
+job         : NSCI Consulting
 framework   : io2012     # {io2012, html5slides, shower, dzslides, ...}
 highlighter : highlight.js  # {highlight.js, prettify, highlight}
 hitheme     : tomorrow      # 
@@ -20,6 +20,7 @@ knit        : slidify::knit2slides
 ### Finance Theory:  
 1. Future Value of Money
 2. Binomial Tree Pricing Model for Option
+3. Pricing a Stock within a Wiener Process
 
 ### Conclusions
 
@@ -29,7 +30,7 @@ knit        : slidify::knit2slides
 
 ### R is a free statistical software package with integrated graphics
 * [Open Source Code](http://cran.r-project.org/), Shared Libraries, & [Integrated Development Environment](http://www.rstudio.com/) 
-```{r echo=FALSE, warning=FALSE, results='hide', message=FALSE}
+```{r libraryLoad, echo=FALSE, warning=FALSE, results='hide', message=FALSE}
 require(stringr)
 require(DiagrammeR)
 require(slidify)
@@ -107,7 +108,7 @@ ani.options(interval=.6)
 
 <div class="centered">
 \begin{equation}
-   \sigma^2  =  E[x^2] - E[x]^2
+   \sigma^2  =  \langle x^2 \rangle - \langle x \rangle^2
 \end{equation}
 </div>
 
@@ -135,8 +136,8 @@ ani.options(interval=.6)
 \end{equation}
 </div>
 
-* Shape of "bell"" curve determined by density wtih center at $\mu$ and [width](https://en.wikipedia.org/wiki/Full_width_at_half_maximum) $\propto \sigma$
-* Expectation value (average) of x is
+* Lineshape of density centered at $\mu$ with [FWHM](https://en.wikipedia.org/wiki/Full_width_at_half_maximum) $= 2\sqrt{2 ln2} \sigma$
+* Expectation value of x is
 
 <div class="centered">
 \begin{equation}
@@ -149,65 +150,45 @@ ani.options(interval=.6)
 
 ---
 ## Tools from Probability (3 / 3)
-### Monte Carlo Data, Normal Distribution, & Cental Limit Theorm
-* Left:  Simulated scores of 50 students with $\mu = 70$ & $\sigma = 5$
-* Right:  Normalized scores of 30, 40, & 50 students $\times$ 1000 simulations
+### Monte Carlo Data, Binomial Distribution, & Cental Limit Theorm
+* Left, mid, and right panels show $2$, $2^8$, and $2^{16}$ samples from 1000 simulations
+* Data are normalized.  Solid line shows density for standard normal.
 
-```{r CLTnrml, echo=FALSE, warning=FALSE, fig.width=12, fig.height=5}
+```{r CLTbinom, echo=FALSE, warning=FALSE, fig.width=12, fig.height=4.5, fig.show='animate'}
 ################################################################################
 ##
-## This code chunk initializes constants used for generating Monte Carlo data##
+## This graph demonstrates Central Limit Theorem for Binomial Distro
+##
+##
+################################################################################
 ##
 nSims = 1000
-mean = 70
-sd = 5 # stanard deviation for normal distributions
+sampleCount1 = 2
+sampleCount2 = 2**8
+sampleCount3 = 2**16
 ##
-################################################################################
-##
-## This code chunk generates& plots Monte Carlo data for normal distribution
-##
-set.seed(314159)
-dataNorm <- tbl_df(data.frame(x = rnorm(50, mean, sd)))
-helper <- function(x) {dnorm(x, mean, sd)}
-plotHistRnorm <- ggplot(dataNorm, aes(x = x)) + geom_histogram(binwidth=.3, aes(y = ..density..), colour = "black", fill = "steelblue")
-plotHistRnorm <- plotHistRnorm + stat_function(fun = helper, size = 2) #+ geom_density(alpha=.2, fill="#FF6666")
-plotHistRnorm <- plotHistRnorm + labs(x ="Test Score", y="Density", title = "Normal Distribution with mean = 70 and standard deviation = 5")
-##
-################################################################################
-##
-## This graph demonstrates arbitrary Normal Distribution & standardizing it
-##
-set.seed(314159)
-rnorm30.frame <- tbl_df(data.frame(matrix(rnorm(nSims*30, mean, sd), nSims)))
-set.seed(314159)
-rnorm40.frame <- tbl_df(data.frame(matrix(rnorm(nSims*40, mean, sd), nSims)))
-set.seed(314159)
-rnorm50.frame <- tbl_df(data.frame(matrix(rnorm(nSims*50, mean, sd), nSims)))
-# View(rnorm40.frame)
-
-cfunc <- function(x, n) sqrt(n) * (mean(x) - (mean) ) / (sd)
-dat <- tbl_df(data.frame(
-    x = c(apply(rnorm30.frame, 1, cfunc, 30),
-          apply(rnorm40.frame, 1, cfunc, 40),
-          apply(rnorm50.frame, 1, cfunc, 50)
+cfunc <- function(x, n) 2 * sqrt(n) * (mean(x) - 0.5) # normalizing to binom distro with p = 0.5
+for(i in 1:10) {
+dat <- data.frame(
+    x = c(apply(matrix(sample(0:1, nSims * sampleCount1, replace = TRUE), 
+                       nSims), 1, cfunc, sampleCount1),
+          apply(matrix(sample(0:1, nSims * sampleCount2, replace = TRUE), 
+                       nSims), 1, cfunc, sampleCount2),
+          apply(matrix(sample(0:1, nSims * sampleCount3, replace = TRUE), 
+                       nSims), 1, cfunc, sampleCount3)
     ),
-    size = factor(rep(c("30 Students", "40 Students", "50 Students"), rep(1000, 3)))))
-#     size = factor(rep(c("30 Students", "40 Students", "50 Students"), rep(1000, 3)))))
+    #     size = factor(rep(c(sampleCount1, sampleCount2, sampleCount3), rep(nSims, 3)))
+    size = factor(rep(c("1st: 2 samples", "2nd: 2^8 samples", "3rd: 2^16 samples"), rep(nSims, 3))))
 # View(dat)
-pltLLNnorm <- ggplot(dat, aes(x = x, fill = size)) + geom_histogram(binwidth=.3, colour = "black", aes(y = ..density..)) 
-pltLLNnorm <- pltLLNnorm + stat_function(fun = dnorm, size = 2) + 
-    labs(y = "Density", title = "Central Limit Theorem:  Normal Distribution")
-pltLLNnorm <- pltLLNnorm + facet_grid(. ~ size)
-
-grid.newpage()
-pushViewport(viewport(layout = grid.layout(1, 2)))
-vplayout <- function(x, y)
-    viewport(layout.pos.row = x, layout.pos.col = y)
-print(plotHistRnorm, vp = vplayout(1, 1))
-print(pltLLNnorm, vp = vplayout(1, 2))
-
+g <- ggplot(dat, aes(x = x, fill = size)) + geom_histogram(binwidth=.3, colour = "black", aes(y = ..density..)) 
+g <- g + stat_function(fun = dnorm, size = 2) +  scale_x_continuous(limits = c(-4, 4))
+g <- g + scale_y_continuous(limits = c(0, 1.75))
+g <- g + labs(y = "Density", title = "Central Limit Theorem:  Binomial Distribution")
+g <- g + facet_grid(. ~ size)
+print(g)
+}
 ```
-* figure courtesy of Dr McDougall
+* In limit, binomial distribution can be approximated by normal distribution
 
 ---
 ## Tools from Stochastic Calculus
@@ -395,7 +376,7 @@ $$ FV_t = PV (e^{rt}) $$
 
 * [Bank Savings interest rate](http://www.mysavingsdirect.com/MySavingsDirectWeb/en/common/information/LearnMore.jsp) $r = 1.25\%$ per annum. Starting balance = [$532.60](http://www.google.com/finance?q=NASDAQ%3AGOOGL&ei=fsF9VfG5JonSjAGE84J4)
 * Figure shows continuous, daily, monthly, quarterly, and annual compounding for 10 years
-```{r fvMoney, echo=FALSE, warning=FALSE, message=FALSE, fig.height=5, fig.width=12, fig.cap="Time Value of Money"}
+```{r fvMoney, echo=FALSE, cache=FALSE, warning=FALSE, message=FALSE, fig.height=5, fig.width=12, fig.cap="Time Value of Money"}
 aprAnn = 0.0125 #https://www.mysavingsdirect.com/MySavingsDirectWeb/en/common/information/LearnMore.jsp
 aprDay = aprAnn / yday(mdy("12/31/2015"))
 aprMnth = aprAnn / 12
@@ -428,7 +409,6 @@ mnyPlt2 <- mnyPlt2 + labs(x = "Date", y = "Amount [$]", title = "Money:  Time Va
 mnyPlt2
 ```
 * Speculation: bank income is area between continuous compounding curve and client's compounding curve
-* figure courtesy of Dr McDougall
 
 ---
 ## Risk Neutral Valuation of a Portfolio
@@ -472,9 +452,8 @@ where u is the multiplier  for increase and d is multiplier for decrease
 ## Portfolio Management (2 / 4)
 
 ### The figure depicts a RNV portfolio generated from Binary Tree Model
-* figure courtesy of Dr McDougall
 
-```{r echo=FALSE, warning=FALSE,cache=FALSE,results='asis'}
+```{r figBinaryTree, echo=FALSE, warning=FALSE, cache=FALSE, results='asis'}
 # <style type="text/css">
 #     body {background:none transparent;
 #           }
@@ -645,7 +624,7 @@ where
 ---
 ## Google vs Savings Account
 ### Numerical approximation to Google's stock price (Dates:  1/2/2015 - 6/12/2015)
-```{r stockPricing, echo=FALSE, message=FALSE, warning=FALSE, fig.height=6, fig.width=12, fig.show='animate'}
+```{r stockPricing, echo=FALSE, message=FALSE, warning=FALSE, cache=FALSE, fig.height=6, fig.width=12, fig.show='animate'}
 ################################################################################
 ##
 ## This section is for comparing Google Stock Price with Wiener Pricing of Stock
@@ -716,7 +695,6 @@ for(j in 1:30) {
     print(mnyPlt)
 }
 ```
-* Animation provided by Dr McDougall
 
 ---
 ## Conclusions
@@ -739,16 +717,8 @@ for(j in 1:30) {
 ---
 ## Acknowledgements
 
-### Ms Johnston
-* for AP Calculus
+### Tristan Dillman McDougall & Robert Twesten for stimulating discussions
 
-### Dr McDougall
-
-* for stimulating discussions regarding Cox, Ross, Rubinstein model,
-* introducing a R-programming enviroment, 
-* demonstrating Latex,
-* introducing GitHub, and
-* keeping us at the white board!
 
 ### References
 * Hull, J.C., **Options, Futures, And Other Derivatives**, 8th ed., Pearson Education Limited, England (2012)

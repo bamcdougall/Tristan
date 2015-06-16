@@ -1,8 +1,8 @@
 ---
-title       : Brief Introduction to Pricing Derivatives
-subtitle    : Pricing a Call Option with a Two Step Binomial Model
-author      : Robby Twesten & Tristan McDougall 
-job         : RT Financials
+title       : Derivative and Stock Pricing
+subtitle    : Binomial Tree Model and Wiener Process
+author      : B.A. McDougall 
+job         : NSCI Consulting
 framework   : io2012     # {io2012, html5slides, shower, dzslides, ...}
 highlighter : highlight.js  # {highlight.js, prettify, highlight}
 hitheme     : tomorrow      # 
@@ -20,6 +20,7 @@ knit        : slidify::knit2slides
 ### Finance Theory:  
 1. Future Value of Money
 2. Binomial Tree Pricing Model for Option
+3. Pricing a Stock within a Wiener Process
 
 ### Conclusions
 
@@ -91,7 +92,7 @@ knit        : slidify::knit2slides
 
 <div class="centered">
 \begin{equation}
-   \sigma^2  =  E[x^2] - E[x]^2
+   \sigma^2  =  \langle x^2 \rangle - \langle x \rangle^2
 \end{equation}
 </div>
 
@@ -119,8 +120,8 @@ knit        : slidify::knit2slides
 \end{equation}
 </div>
 
-* Shape of "bell"" curve determined by density wtih center at $\mu$ and [width](https://en.wikipedia.org/wiki/Full_width_at_half_maximum) $\propto \sigma$
-* Expectation value (average) of x is
+* Lineshape of density centered at $\mu$ with [FWHM](https://en.wikipedia.org/wiki/Full_width_at_half_maximum) $= 2\sqrt{2 ln2} \sigma$
+* Expectation value of x is
 
 <div class="centered">
 \begin{equation}
@@ -133,12 +134,12 @@ knit        : slidify::knit2slides
 
 ---
 ## Tools from Probability (3 / 3)
-### Monte Carlo Data, Normal Distribution, & Cental Limit Theorm
-* Left:  Simulated scores of 50 students with $\mu = 70$ & $\sigma = 5$
-* Right:  Normalized scores of 30, 40, & 50 students $\times$ 1000 simulations
+### Monte Carlo Data, Binomial Distribution, & Cental Limit Theorm
+* Left, mid, and right panels show $2$, $2^8$, and $2^{16}$ samples from 1000 simulations
+* Data are normalized.  Solid line shows density for standard normal.
 
-![plot of chunk CLTnrml](assets/fig/CLTnrml-1.png) 
-* figure courtesy of Dr McDougall
+<video   controls loop><source src="assets/fig/CLTbinom-.webm" />video of chunk CLTbinom</video>
+* In limit, binomial distribution can be approximated by normal distribution
 
 ---
 ## Tools from Stochastic Calculus
@@ -328,7 +329,6 @@ $$ FV_t = PV (e^{rt}) $$
 * Figure shows continuous, daily, monthly, quarterly, and annual compounding for 10 years
 ![Time Value of Money](assets/fig/fvMoney-1.png) 
 * Speculation: bank income is area between continuous compounding curve and client's compounding curve
-* figure courtesy of Dr McDougall
 
 ---
 ## Risk Neutral Valuation of a Portfolio
@@ -372,7 +372,6 @@ where u is the multiplier  for increase and d is multiplier for decrease
 ## Portfolio Management (2 / 4)
 
 ### The figure depicts a RNV portfolio generated from Binary Tree Model
-* figure courtesy of Dr McDougall
 
 <iframe src="diagram.html" width=100% height=100% allowtransparency="true"> </iframe>
 
@@ -492,7 +491,6 @@ where
 ## Google vs Savings Account
 ### Numerical approximation to Google's stock price (Dates:  1/2/2015 - 6/12/2015)
 <video   controls loop><source src="assets/fig/stockPricing-.webm" />video of chunk stockPricing</video>
-* Animation provided by Dr McDougall
 
 ---
 ## Conclusions
@@ -515,16 +513,8 @@ where
 ---
 ## Acknowledgements
 
-### Ms Johnston
-* for AP Calculus
+### Tristan Dillman McDougall & Robert Twesten for stimulating discussions
 
-### Dr McDougall
-
-* for stimulating discussions regarding Cox, Ross, Rubinstein model,
-* introducing a R-programming enviroment, 
-* demonstrating Latex,
-* introducing GitHub, and
-* keeping us at the white board!
 
 ### References
 * Hull, J.C., **Options, Futures, And Other Derivatives**, 8th ed., Pearson Education Limited, England (2012)
