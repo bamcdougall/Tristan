@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>A Derivative Financial Instrument</title>
+  <title>Brief Introduction to Pricing Derivatives</title>
   <meta charset="utf-8">
-  <meta name="description" content="A Derivative Financial Instrument">
-  <meta name="author" content="Robert Twesten, Tristan Dillman McDougall, &amp; Brendan McDougall">
+  <meta name="description" content="Brief Introduction to Pricing Derivatives">
+  <meta name="author" content="Robert Twesten &amp; Tristan Dillman McDougall">
   <meta name="generator" content="slidify" />
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta http-equiv="X-UA-Compatible" content="chrome=1">
@@ -33,9 +33,9 @@
     <!-- LOGO SLIDE -->
         <slide class="title-slide segue nobackground">
   <hgroup class="auto-fadein">
-    <h1>A Derivative Financial Instrument</h1>
-    <h2>Pricing a Call Option with Two Step Binomial Model</h2>
-    <p>Robert Twesten, Tristan Dillman McDougall, &amp; Brendan McDougall<br/>RT Financials</p>
+    <h1>Brief Introduction to Pricing Derivatives</h1>
+    <h2>Pricing a Call Option with a Two Step Binomial Model</h2>
+    <p>Robby Twesten &amp; Tristan McDougall<br/>RT Financials</p>
   </hgroup>
   <article></article>  
 </slide>
@@ -61,8 +61,6 @@
 <li>Future Value of Money</li>
 <li>Binomial Tree Pricing Model for Option</li>
 </ol>
-
-<h3>Example</h3>
 
 <h3>Conclusions</h3>
 
@@ -102,7 +100,7 @@
 
 <div class="centered">
 \begin{equation}
-    e = \lim_{n\to\infty} (1 + n)^{1/n}
+    e = \lim_{n\to\infty} (1 + 1/n)^n
 \end{equation}
 </div>
 
@@ -173,7 +171,7 @@
 
 <slide class="" id="slide-5" style="background:;">
   <hgroup>
-    <h2>Tools from Probability</h2>
+    <h2>Tools from Probability (1 / 3)</h2>
   </hgroup>
   <article data-timings="">
     <h3><a href="http://en.wikipedia.org/wiki/Stochastic_process">Stochastic Processes</a>: observations whose values are random with respect to time</h3>
@@ -198,6 +196,63 @@
 
 <slide class="" id="slide-6" style="background:;">
   <hgroup>
+    <h2>Tools from Probability (2 / 3)</h2>
+  </hgroup>
+  <article data-timings="">
+    <h3>Normal Distribution</h3>
+
+<ul>
+<li><p>Density is</p>
+
+<div class="centered">
+\begin{equation}
+f(x) = \frac{1}{\sqrt{2 \pi} \sigma} e^{-(x - \mu)^2/2 \sigma^2}
+\end{equation}
+</div></li>
+<li><p>Shape of &quot;bell&quot;&quot; curve determined by density wtih center at \(\mu\) and <a href="https://en.wikipedia.org/wiki/Full_width_at_half_maximum">width</a> \(\propto \sigma\)</p></li>
+<li><p>Expectation value (average) of x is</p></li>
+</ul>
+
+<div class="centered">
+\begin{equation}
+   E(x) = \langle x \rangle = \int_{-\infty}^{-\infty} x \frac{1}{\sqrt{2 \pi} \sigma} e^{-(x - \mu)^2/2 \sigma^2} dx
+\end{equation}
+</div>
+
+<h3>Standard Normal Distribution</h3>
+
+<ul>
+<li>Definition: \(\mu = 0\) &amp;  \(\sigma^2 = 1\)</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-7" style="background:;">
+  <hgroup>
+    <h2>Tools from Probability (3 / 3)</h2>
+  </hgroup>
+  <article data-timings="">
+    <h3>Monte Carlo Data, Normal Distribution, &amp; Cental Limit Theorm</h3>
+
+<ul>
+<li>Left:  Simulated scores of 50 students with \(\mu = 70\) &amp; \(\sigma = 5\)</li>
+<li>Right:  Normalized scores of 30, 40, &amp; 50 students \(\times\) 1000 simulations</li>
+</ul>
+
+<p><img src="assets/fig/CLTnrml-1.png" alt="plot of chunk CLTnrml"> </p>
+
+<ul>
+<li>figure courtesy of Dr McDougall</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-8" style="background:;">
+  <hgroup>
     <h2>Tools from Stochastic Calculus</h2>
   </hgroup>
   <article data-timings="">
@@ -211,23 +266,248 @@
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-7" style="background:;">
+<slide class="" id="slide-9" style="background:;">
   <hgroup>
-    <h2>Future Value of Money</h2>
+    <h2>Definitions from Finance</h2>
   </hgroup>
   <article data-timings="">
-    <ul>
-<li>Stuffs on present value of money versus future value of money</li>
-<li>Show compounding interest</li>
-<li>Show compounding interest in limit of large number of small periods (Defn of e)</li>
-<li>Graphs showing discrete compounding versus continuous compounding</li>
+    <h3>Stock</h3>
+
+<ul>
+<li>An asset that is partial ownership of a publicly traded firm.</li>
+</ul>
+
+<h3>European Option</h3>
+
+<ul>
+<li>Right to buy (long) or sell (short) an asset (stock) at a strike price at a fixed date (maturity), for a fee today.</li>
+</ul>
+
+<h3>Call Option</h3>
+
+<ul>
+<li>The option to buy a stock in the future at a fixed price.</li>
+<li>Two sides:  buyer and seller</li>
+</ul>
+
+<h3>Put Option</h3>
+
+<ul>
+<li>The option to sell a stock in the future at a fixed price.</li>
+<li>Two sides:  buyer and seller</li>
 </ul>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-8" style="background:;">
+<slide class="" id="slide-10" style="background:;">
+  <hgroup>
+    <h2>Future Value of Money</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>r = risk free interest rate<br>
+PV = Present Value of Money<br>
+FV = Future Value of Money
+\[ FV_1 = PV + r(PV) \]</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-11" style="background:;">
+  <hgroup>
+    <h2>Future Value of Money</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>r = risk free interest rate<br>
+PV = Present Value of Money<br>
+FV = Future Value of Money
+\[ FV_1 = PV + r(PV) \]</p>
+
+<h3>Example:</h3>
+
+<p>\[ r = 10\% \]
+\[ PV = $100 \]
+\[ FV_1 = ? \]</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-12" style="background:;">
+  <hgroup>
+    <h2>Future Value of Money</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>r = risk free interest rate<br>
+PV = Present Value of Money<br>
+FV = Future Value of Money
+\[ FV_1 = PV + r(PV) \]</p>
+
+<h3>Example:</h3>
+
+<p>\[ FV_1 = $100 + (10\%)($100) \]
+\[ FV_1 = $110 \]</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-13" style="background:;">
+  <hgroup>
+    <h2>Future Value of Money</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>r = risk free interest rate<br>
+PV = Present Value of Money<br>
+FV = Future Value of Money
+\[ FV_1 = PV + r(PV) \]</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-14" style="background:;">
+  <hgroup>
+    <h2>Future Value of Money</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>r = risk free interest rate<br>
+PV = Present Value of Money<br>
+FV = Future Value of Money
+\[ FV_1 = PV + r(PV) \]</p>
+
+<p>\[ FV_2 = (FV_1) + r(FV_1) \]</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-15" style="background:;">
+  <hgroup>
+    <h2>Future Value of Money</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>r = risk free interest rate<br>
+PV = Present Value of Money<br>
+FV = Future Value of Money
+\[ FV_1 = PV + r(PV) \]</p>
+
+<p>\[ FV_2 = (FV_1) + r(FV_1) \]</p>
+
+<p>\[ FV_2 = (PV + r(PV)) + r(PV + r(PV)) \]</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-16" style="background:;">
+  <hgroup>
+    <h2>Future Value of Money</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>r = risk free interest rate<br>
+PV = Present Value of Money<br>
+FV = Future Value of Money
+\[ FV_1 = PV + r(PV) \]</p>
+
+<p>\[ FV_2 = (FV_1) + r(FV_1) \]</p>
+
+<p>\[ FV_2 = (PV + r(PV)) + r(PV + r(PV)) \]</p>
+
+<p>\[ FV_2 = PV(1 + 2r + r^2) \]</p>
+
+<p>\[ FV_2 = PV(1+r)^2 \]</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-17" style="background:;">
+  <hgroup>
+    <h2>Future Value of Money</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>r = risk free interest rate<br>
+PV = Present Value of Money<br>
+FV = Future Value of Money
+\[ FV_1 = PV + r(PV) \]</p>
+
+<p>\[ FV_2 = PV(1+r)^2 \]</p>
+
+<p>\[ FV_t = PV(1+r)^t \]</p>
+
+<p>\[ FV_t = PV(1+\frac{r}{n})^{nt} \]</p>
+
+<h3>-t is a time step</h3>
+
+<h3>-n is a unit conversion</h3>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-18" style="background:;">
+  <hgroup>
+    <h2>Future Value of Money</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>r = risk free interest rate<br>
+PV = Present Value of Money<br>
+FV = Future Value of Money<br>
+n = Unit Conversion<br>
+t = Time Conversion</p>
+
+<p>\[ FV_t = PV(1+\frac{r}{n})^{nt} \]</p>
+
+<p>\[ k = \frac{n}{r} \]</p>
+
+<p>\[ n = k*r \]</p>
+
+<p>\[ FV_t = PV(1+\frac{1}{k})^{krt} \]</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-19" style="background:;">
+  <hgroup>
+    <h2>Future Value of Money</h2>
+  </hgroup>
+  <article data-timings="">
+    <p>r = risk free interest rate<br>
+PV = Present Value of Money<br>
+FV = Future Value of Money  </p>
+
+<p>\[  e = \lim_{x\to\infty} (1+\frac{1}{x})^x \]</p>
+
+<p>\[ FV_t = PV(\lim_{k\to\infty} (1+\frac{1}{k})^{k})^{rt} \]</p>
+
+<p>\[ FV_t = PV (e^{rt}) \]</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-20" style="background:;">
+  <hgroup>
+    <h2>Future Value of Money</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li><a href="http://www.mysavingsdirect.com/MySavingsDirectWeb/en/common/information/LearnMore.jsp">Bank Savings interest rate</a> \(r = 1.25\%\) per annum. Starting balance = <a href="http://www.google.com/finance?q=NASDAQ%3AGOOGL&amp;ei=fsF9VfG5JonSjAGE84J4">$532.60</a></li>
+<li>Figure shows continuous, daily, monthly, quarterly, and annual compounding for 10 years
+<img src="assets/fig/fvMoney-1.png" alt="Time Value of Money"> </li>
+<li>Speculation: bank income is area between continuous compounding curve and client&#39;s compounding curve</li>
+<li>figure courtesy of Dr McDougall</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-21" style="background:;">
   <hgroup>
     <h2>Risk Neutral Valuation of a Portfolio</h2>
   </hgroup>
@@ -235,8 +515,8 @@
     <h3>Assumptions</h3>
 
 <ol>
-<li>The expected return on a stock (or any other investment) is the risk-free rate.</li>
-<li>The discount rate used for the expected payoff on an option (or any other instrument) is the risk-free rate.</li>
+<li>Expected return on a stock (or any other instrument) is the risk-free rate \(e^{rt}\).</li>
+<li>Discount rate for payoff on an option (or any other instrument) is the risk-free rate \(e^{-rt}\).</li>
 </ol>
 
 <h3>Purpose</h3>
@@ -245,37 +525,47 @@
 <li>Risk Neutral Valuation (RNV) simplifies pricing.</li>
 </ol>
 
-<p>All returns and discounts are at risk-free rate.</p>
+<ul>
+<li>All returns and discounts are at risk-free rate.</li>
+</ul>
 
 <ol>
-<li>Relationship between stock and derivative is the same regardless of risk.</li>
+<li><strong>Relationship between stock and derivative is the same regardless of risk</strong>.</li>
 </ol>
 
-<p>Risk incorporated into price of stock.</p>
+<ul>
+<li>Risk incorporated into price of stock.</li>
+</ul>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-9" style="background:;">
+<slide class="" id="slide-22" style="background:;">
   <hgroup>
-    <h2>Portfolio Management</h2>
+    <h2>Portfolio Management (1 / 4)</h2>
   </hgroup>
   <article data-timings="">
-    <h3>Risk Free Portfolio (RFP)</h3>
+    <h3>Generate RNV Portfolio using <a href="https://en.wikipedia.org/wiki/Binomial_options_pricing_model">Binary Tree Model</a></h3>
+
+<ol>
+<li>Purchasing \(\Delta\) shares of stock at price \(S_o\)</li>
+<li>Short a call option on same stock with value \(f\)</li>
+</ol>
 
 <ul>
-<li>Value of portfolio is same whether stock price goes up or down:</li>
+<li>Value of RNV portfolio is same whether stock price goes up or down</li>
 </ul>
 
 <p>\begin{equation}
     (\Delta S_o) u - f_u = (\Delta S_o) d - f_d
-\end{equation}</p>
+\end{equation}
+where u is the multiplier  for increase and d is multiplier for decrease</p>
 
-<h3>\(\Delta\) Hedge</h3>
+<h3>\(\Delta\) Hedge for RNV Portfolio</h3>
 
 <ul>
-<li>Determine number of shares \(\Delta\) required for creating a RFP</li>
+<li>From equality, \(\Delta\) required for creating a RNV Portfolio is</li>
 </ul>
 
 <p>\begin{equation}
@@ -286,20 +576,246 @@
   <!-- Presenter Notes -->
 </slide>
 
-<slide class="" id="slide-10" style="background:;">
+<slide class="" id="slide-23" style="background:;">
   <hgroup>
-    <h2>Pricing Slides (to be done)</h2>
+    <h2>Portfolio Management (2 / 4)</h2>
+  </hgroup>
+  <article data-timings="">
+    <h3>The figure depicts a RNV portfolio generated from Binary Tree Model</h3>
+
+<ul>
+<li>figure courtesy of Dr McDougall</li>
+</ul>
+
+<iframe src="diagram.html" width=100% height=100% allowtransparency="true"> </iframe>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-24" style="background:;">
+  <hgroup>
+    <h2>Portfolio Management (3 / 4)</h2>
   </hgroup>
   <article data-timings="">
     <ul>
-<li>Integration of Stock price \(\Delta S / S\) etc.</li>
-<li>Two properties are:</li>
+<li>PV of RNV is discounted FV, i.e.</li>
+</ul>
+
+<div class="centered">
+\begin{equation}
+    (\Delta S_o)  - f = e^{-r t} \left[ (\Delta S_o) u - f_u \right]
+\end{equation}
+</div>
+
+<ul>
+<li>Solving for f estimates PV of call option, so
+\begin{equation}
+\vdots
+\end{equation}</li>
+</ul>
+
+<div class="centered">
+\begin{equation}
+   f = e^{-r t} \left[ p f_u + (1 - p) f_d \right]
+\end{equation}
+</div>
+
+<p>where</p>
+
+<div class="centered">
+\begin{equation}
+   p = \frac{e^{r t} - d}{u - d}
+\end{equation}
+</div>
+
+<ul>
+<li><strong>NOTE</strong>:  f is discounted expectation value of option&#39;s FV with a binomial density (<em>coin flip</em>)</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-25" style="background:;">
+  <hgroup>
+    <h2>Portfolio Management (4 / 4)</h2>
+  </hgroup>
+  <article data-timings="">
+    <h3>From Probability Theory, variance is proportional to \(\Delta t\), so</h3>
+
+<div class="centered">
+\begin{equation}
+    \sigma^2 \Delta t = \langle S(t)^2 \rangle - \langle S(t) \rangle ^2
+\end{equation}
+</div>
+
+<p>\begin{equation}
+\vdots
+\end{equation}</p>
+
+<div class="centered">
+\begin{equation}
+   \sigma^2 \Delta t = \left[ p u^2 + (1-p) d^2 \right] - \left[ \left( p u + (1-p) d \right)^2 \right]
+\end{equation}
+</div>
+
+<p>\begin{equation}
+\vdots
+\end{equation}</p>
+
+<div class="centered">
+\begin{equation}
+   \sigma^2 \Delta t = (u + d) e^{\mu t} - du - e^{2 \mu t}
+\end{equation}
+</div>
+
+<ul>
+<li>with a Taylor Expansion, one validates a solution for u &amp; d is \(u = e^{\sigma \sqrt{\Delta t}}\) &amp; \(d = e^{- \sigma \sqrt{\Delta t}}\)</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-26" style="background:;">
+  <hgroup>
+    <h2>Pricing a Stock</h2>
+  </hgroup>
+  <article data-timings="">
+    <h3>Current Status</h3>
+
+<ul>
+<li>Given a RNV Portfolio, binary tree model prices a call option for a \(\Delta\) Hedge</li>
+<li>The binary tree model is transformed from <em>RNV world</em> to <em>market world</em> by incorporating market return \(\mu\) and volatility \(\sigma^2 \Delta t\) in price multipliers \(u\) &amp; \(d\)</li>
+<li>Remaining action is determining time dependence of stock price \(S\)</li>
+<li>Two necessary properties are:</li>
 </ul>
 
 <ol>
-<li> The change \(\Delta z\) during a small period of time \(\Delta t\) is \(\Delta z = \epsilon \sqrt(\Delta t)\) where \(\epsilon\) is a standard normal distribution \(\Phi(0,1)\).</li>
+<li> The change \(\Delta z\) during a small period of time \(\Delta t\) is \(\Delta z = \epsilon \sqrt(\Delta t)\) where \(\epsilon\) is a standard normal distribution.</li>
 <li> The values of \(\Delta z\) for any two different short intervals of time, \(\Delta t\), are independent.</li>
 </ol>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-27" style="background:;">
+  <hgroup>
+    <h2>Time Dependence of Stock Price \(S\)</h2>
+  </hgroup>
+  <article data-timings="">
+    <div class="centered">
+\begin{equation}
+    d S = \mu S d t + \sigma S \epsilon \sqrt{dt}
+\end{equation}
+</div>
+
+<ul>
+<li>Neglecting volatility, \(S(t) = S_o e^{\mu t}\)</li>
+<li>Solving numerically,
+\begin{equation}
+\vdots
+\end{equation}</li>
+</ul>
+
+<div class="centered">
+\begin{equation}
+     \Delta S = \mu S \Delta t + \sigma S \epsilon \sqrt{\Delta t}
+\end{equation}
+</div>
+
+<p>\begin{equation}
+\vdots
+\end{equation}</p>
+
+<div class="centered">
+\begin{equation}
+    S_{i + 1} = S_i + \mu S_i \Delta t + \sigma S_i \epsilon \sqrt{\Delta t}
+\end{equation}
+</div>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-28" style="background:;">
+  <hgroup>
+    <h2>Google vs Savings Account</h2>
+  </hgroup>
+  <article data-timings="">
+    <h3>Numerical approximation to Google&#39;s stock price (Dates:  1/2/2015 - 6/12/2015)</h3>
+
+<p><video   controls loop><source src="assets/fig/stockPricing-.webm" />video of chunk stockPricing</video></p>
+
+<ul>
+<li>Animation provided by Dr McDougall</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-29" style="background:;">
+  <hgroup>
+    <h2>Conclusions</h2>
+  </hgroup>
+  <article data-timings="">
+    <h3>Finance utilizes multiple branches of mathematics</h3>
+
+<ul>
+<li>from Algebra to Stochastic Calculus</li>
+</ul>
+
+<h3>Future value of our money depends on \(r\) and short compounding intervals</h3>
+
+<h3>\(\Delta\) Hedging demonstrates earning income at market rate \(\mu\) with negligible risk</h3>
+
+<ul>
+<li>ratio between Google&#39;s rate of return and best available bank rate is \(\mu / r =\) <code>7.28</code></li>
+<li>high frquency trading rate is of order \(1 \mu s\) vs daily, \(\ldots\), or annual compounding of banks</li>
+</ul>
+
+<h3>Binary Tree approximation enables pricing of call option for \(\Delta\) Hedging.</h3>
+
+<h3>Binary Tree approximation with Wiener Process enables estimation of stock price</h3>
+
+<ul>
+<li>Wiener process shows risk of stochastic processes in pricing model</li>
+<li>\(\Delta\) Hedging mitigates inherent risk due of stochastic processes</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-30" style="background:;">
+  <hgroup>
+    <h2>Acknowledgements</h2>
+  </hgroup>
+  <article data-timings="">
+    <h3>Ms Johnston</h3>
+
+<ul>
+<li>for AP Calculus</li>
+</ul>
+
+<h3>Dr McDougall</h3>
+
+<ul>
+<li>for stimulating discussions regarding Cox, Ross, Rubinstein model,</li>
+<li>introducing a R-programming enviroment, </li>
+<li>demonstrating Latex,</li>
+<li>introducing GitHub, and</li>
+<li>keeping us at the white board!</li>
+</ul>
+
+<h3>References</h3>
+
+<ul>
+<li>Hull, J.C., <strong>Options, Futures, And Other Derivatives</strong>, 8th ed., Pearson Education Limited, England (2012)</li>
+</ul>
 
   </article>
   <!-- Presenter Notes -->
@@ -335,38 +851,158 @@
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=5 title='Tools from Probability'>
+        data-slide=5 title='Tools from Probability (1 / 3)'>
          5
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=6 title='Tools from Stochastic Calculus'>
+        data-slide=6 title='Tools from Probability (2 / 3)'>
          6
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=7 title='Future Value of Money'>
+        data-slide=7 title='Tools from Probability (3 / 3)'>
          7
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=8 title='Risk Neutral Valuation of a Portfolio'>
+        data-slide=8 title='Tools from Stochastic Calculus'>
          8
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=9 title='Portfolio Management'>
+        data-slide=9 title='Definitions from Finance'>
          9
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=10 title='Pricing Slides (to be done)'>
+        data-slide=10 title='Future Value of Money'>
          10
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=11 title='Future Value of Money'>
+         11
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=12 title='Future Value of Money'>
+         12
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=13 title='Future Value of Money'>
+         13
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=14 title='Future Value of Money'>
+         14
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=15 title='Future Value of Money'>
+         15
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=16 title='Future Value of Money'>
+         16
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=17 title='Future Value of Money'>
+         17
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=18 title='Future Value of Money'>
+         18
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=19 title='Future Value of Money'>
+         19
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=20 title='Future Value of Money'>
+         20
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=21 title='Risk Neutral Valuation of a Portfolio'>
+         21
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=22 title='Portfolio Management (1 / 4)'>
+         22
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=23 title='Portfolio Management (2 / 4)'>
+         23
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=24 title='Portfolio Management (3 / 4)'>
+         24
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=25 title='Portfolio Management (4 / 4)'>
+         25
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=26 title='Pricing a Stock'>
+         26
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=27 title='Time Dependence of Stock Price \(S\)'>
+         27
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=28 title='Google vs Savings Account'>
+         28
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=29 title='Conclusions'>
+         29
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=30 title='Acknowledgements'>
+         30
       </a>
     </li>
   </ul>

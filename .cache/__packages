@@ -3,3 +3,15 @@ stringr
 slidify
 knitr
 DiagrammeR
+dplyr
+lubridate
+ggplot2
+Cairo
+animation
+gridExtra
+gtable
+zoo
+xts
+TTR
+quantmod
+htmlwidgets

@@ -1,12 +1,12 @@
 # No csv files
 # *.gitignore
-*.csv
+# *.csv
 *.Rdata
 *.Rhistory
 *.zip
 *.bz2
 # *.html
 *.pdf
-*.Rmd
+# *.Rmd
 # *.txt
 # *.png

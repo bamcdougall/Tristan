@@ -1,0 +1,256 @@
+---
+title       : A Derivative Financial Instrument
+subtitle    : Pricing a Call Option with Two Step Binomial Model
+author      : Robby Twesten & Tristan Dillman McDougall 
+job         : RT Financials
+framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
+highlighter : highlight.js  # {highlight.js, prettify, highlight}
+hitheme     : tomorrow      # 
+widgets     : [mathjax, bootstrap]            # {mathjax, quiz, bootstrap}
+mode        : selfcontained # {standalone, draft}
+knit        : slidify::knit2slides
+---
+
+## Outline
+
+### Tools:  
+1. Programming Environment
+2. Probability
+3. Calculus
+
+### Finance Theory:  
+1. Future Value of Money
+2. Binomial Tree Pricing Model for Option
+
+### Example
+
+### Conclusions
+
+--- .class #id
+
+<<<<<<< HEAD
+## Integrated Development Environment (IDE)
+
+### R:
+* Open Source Code & Shared Libraries
+=======
+## Programming Environment
+
+### R is a free statistical software package with integrated graphics
+* [Open Source Code](http://cran.r-project.org/), Shared Libraries, & [Integrated Development Environment](http://www.rstudio.com/) 
+>>>>>>> master
+```{r echo=FALSE, warning=FALSE, results='hide', message=FALSE}
+require(stringr)
+require(slidify)
+require(knitr)
+require(DiagrammeR)
+```
+<<<<<<< HEAD
+* Plotting, Typesetting, & Slide Presentations
+
+### Version Control
+ 1. [Git](https://www.git-scm.com) invented by Linus Torvalds (open source Linux)
+ 2. [Git Hub](https://github.com/RobertTwesten/Tristan) distributed version control ([used by Google](https://github.com/google))
+ 
+---
+=======
+
+* [Plotting](http://ggplot2.org/), [LaTex](http://www.latex-project.org/) for equations, & [Slide Presentations](https://github.com/ramnathv/slidifyExamples)
+
+### Version Control
+* [Git](https://www.git-scm.com) invented by Linus Torvalds (open source Linux)
+* [Git Hub](https://github.com/RobertTwesten/Tristan) distributed version control ([used by Google](https://github.com/google))
+ 
+>>>>>>> master
+
+
+
+---
+<<<<<<< HEAD
+
+## Tools from AP Calculus
+
+### Total Derivative
+#### Stochastic Processes
+##### Stochastic processes are observations whose value is random with respect to time
+
+* Ito's Lemma
+
+
+### Definition of e
+#### Applications
+* Future Value of Money
+* Discount Rate
+
+---
+## Tools from Probability
+
+### Binomial Distribution
+1. $E[X] = n p$
+2. $Var(X) = n p(1 - p)$
+
+---
+## Risk Neutral Valuation
+=======
+```{r echo=FALSE, warning=FALSE, results='hide', message=FALSE}
+extensions <- markdown::markdownExtensions()
+options(markdown.extensions=extensions[extensions != "superscript"])
+```
+
+## Tools from AP Calculus
+
+### Definition of $e$
+
+\begin{equation}
+    e = \lim_{n\to\infty} (1 + n)^{1/n}
+\end{equation}
+
+### Integration
+
+* Assume a [linear measure]( http://en.wikipedia.org/wiki/Measure_(mathematics\) ) in $\Re^1$, then
+\begin{equation}
+    \int dx = x + C
+\end{equation}
+
+### Total Derivative (not covered, but will use anyway)
+
+* Let $f$ be a function of $x(t)$, $y(t)$, and $t$. The total derivative with respect to time is
+
+\begin{equation}
+    \frac{d f(x(t), y(t), t)}{d t} = \frac{\partial f}{\partial x} \frac{d x}{d t} + \frac{\partial f}{\partial y} \frac{d y}{d t}
+    + \frac{\partial f}{\partial t} \frac{d t}{d t}
+\end{equation}
+
+---
+## Tools from Statistics
+
+### Observations
+* Given a set of observations $\{x_i\}$, the mean is
+
+\begin{equation}
+    \mu =  \sum_{i=1}^{n} \frac{x_i}{n}
+\end{equation}
+
+
+* The variance (a measure of disorder) is 
+
+\begin{equation}
+    \sigma^2  =  \sum_{i=1}^n \frac{(x_i - \mu)^2}{n}
+\end{equation}
+\begin{equation}
+\vdots
+\end{equation}
+\begin{equation}
+   \sigma^2  =  E[x^2] - E[x]^2    
+\end{equation}
+
+---
+
+## Tools from Probability
+### [Stochastic Processes](http://en.wikipedia.org/wiki/Stochastic_process): observations whose values are random with respect to time
+
+
+### Markov Process
+* Future stock price depends only on current price.
+* Distributions are normal. Means are additive. Variances are additive.
+
+### Wiener Process
+
+* Future stock price depends only on current price.
+* Distributions are standard normal, i.e. $\mu = 0$ &  $\sigma^2 = 1$.
+
+---
+## Tools from Stochastic Calculus
+
+### Ito's Lemma
+* Show definition of Ito's lemma
+
+---
+## Future Value of Money
+
+* Stuffs on present value of money versus future value of money
+* Show compounding interest
+* Show compounding interest in limit of large number of small periods (Defn of e)
+* Graphs showing discrete compounding versus continuous compounding
+
+---
+## Risk Neutral Valuation of a Portfolio
+>>>>>>> master
+
+### Assumptions
+1. The expected return on a stock (or any other investment) is the risk-free rate.
+2. The discount rate used for the expected payoff on an option (or any other instrument) is the risk-free rate.
+
+### Purpose
+1. Risk Neutral Valuation (RNV) simplifies pricing.
+
+All returns and discounts are at risk-free rate.
+
+2. Relationship between stock and derivative is the same regardless of risk.
+
+Risk incorporated into price of stock.
+
+---
+<<<<<<< HEAD
+## Risk Free Portfolio (RFP)
+
+### Value of portfolio is same whether stock price goes up or down:
+=======
+## Portfolio Management
+
+### Risk Free Portfolio (RFP)
+* Value of portfolio is same whether stock price goes up or down:
+>>>>>>> master
+
+\begin{equation}
+    (\Delta S_o) u - f_u = (\Delta S_o) d - f_d
+\end{equation}
+
+### $\Delta$ Hedge
+<<<<<<< HEAD
+### Determine number of shares required for RFP
+=======
+* Determine number of shares $\Delta$ required for creating a RFP
+>>>>>>> master
+
+\begin{equation}
+    \Delta = \frac{f_u - f_d}{S_o (u-d)}
+\end{equation}
+
+---
+<<<<<<< HEAD
+
+## Stochastic Processes
+
+### Stochastic processes are observations whose value is random with respect to time.
+
+---
+
+### Markov Process
+* Markov process with respect to stock price implies that future price only depends on current price.
+* Distribution is normal
+
+Means are additive and variances are additive
+
+---
+
+#### Wiener Process
+* Distribution is standard normal, i.e. mean = 0 and variance = 1.
+
+A physical example of a Wiener processes is Brownian motion.
+
+$Var(X) = E[X^2] - (E[X])^2$
+
+* Two properties are:
+1.  The change $\Delta z$ during a small period of time $\Delta t$ is $\Delta z = \epsilon \sqrt(\Delta t)$ where $\epsilon$ is a standard normal distribution $\Phi(0,1)$.
+2.  The values of $\Delta z$ for any two different short intervals of time, $\Delta t$, are independent.
+=======
+## Pricing Slides (to be done)
+
+* Integration of Stock price $\Delta S / S$ etc.
+* Two properties are:
+
+1.  The change $\Delta z$ during a small period of time $\Delta t$ is $\Delta z = \epsilon \sqrt(\Delta t)$ where $\epsilon$ is a standard normal distribution $\Phi(0,1)$.
+2.  The values of $\Delta z$ for any two different short intervals of time, $\Delta t$, are independent.
+
+>>>>>>> master
