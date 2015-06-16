@@ -1,8 +1,8 @@
 ---
 title       : Derivative and Stock Pricing
 subtitle    : Binomial Tree Model and Wiener Process
-author      : B.A. McDougall 
-job         : NSCI Consulting
+author      : T.A. Dillman McDougall (1), R. Twesten (1), B.A. McDougall (2) 
+job         : (1) Livermore High School (CA), (2) NSCI Consulting
 framework   : io2012     # {io2012, html5slides, shower, dzslides, ...}
 highlighter : highlight.js  # {highlight.js, prettify, highlight}
 hitheme     : tomorrow      # 
@@ -543,7 +543,6 @@ goog_W <- vector("numeric", length = 112)
 goog_W[1] <- 532.60
 
 for(j in 1:30) {
-    count <- count + 1
     for(i in 2:112) {
         #     set.seed(314159)
         goog_W[i] <- goog_W[i-1] * (1 + mu_daily * (1/365) + sd_googlDly * rnorm(1) * sqrt(1/365)) 
@@ -580,9 +579,12 @@ for(j in 1:30) {
 ---
 ## Acknowledgements
 
-### Tristan Dillman McDougall & Robert Twesten for stimulating discussions
+### M Galletta
+### K Tate
+### C Dillman
+### K Twesten
 
 
-### References
+## References
 * Hull, J.C., **Options, Futures, And Other Derivatives**, 8th ed., Pearson Education Limited, England (2012)
 
