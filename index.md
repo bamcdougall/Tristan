@@ -24,6 +24,8 @@ knit        : slidify::knit2slides
 
 ### Conclusions
 
+### Acknowledgements
+
 --- .class #id
 
 ## Programming Environment
@@ -163,165 +165,24 @@ knit        : slidify::knit2slides
 
 ### Call Option
 * Option to buy an asset at strike price $S_k$ at maturity for a premium.
-* Two sides:  buyer and seller
 
 ### Put Option
 * Option to sell an asset at strike price $S_k$ at maturity for a premium.
-* Two sides:  buyer and seller
 
 ---
-
 ## Future Value of Money
+### Annual Compounding vs Continuous Compounding
+* $r =$ risk free interest rate
+* $PV =$ Present Value of Money
+* $FV =$ Future Value of Money
+* With annual compounding, $FV_1 = PV (1 + r)$
 
-r = risk free interest rate   
-PV = Present Value of Money  
-FV = Future Value of Money
-$$ FV_1 = PV + r(PV) $$
-
----
-
-## Future Value of Money
-
-
-r = risk free interest rate   
-PV = Present Value of Money  
-FV = Future Value of Money
-$$ FV_1 = PV + r(PV) $$
-  
-### Example:
-$$ r = 10\% $$
-$$ PV = $100 $$
-$$ FV_1 = ? $$
-
----
-
-## Future Value of Money
-
-r = risk free interest rate   
-PV = Present Value of Money  
-FV = Future Value of Money
-$$ FV_1 = PV + r(PV) $$
-  
-### Example:
-$$ FV_1 = $100 + (10\%)($100) $$
-$$ FV_1 = $110 $$
-
----
-
-## Future Value of Money
-
-r = risk free interest rate   
-PV = Present Value of Money  
-FV = Future Value of Money
-$$ FV_1 = PV + r(PV) $$
-
----
-
-## Future Value of Money
-
-
-r = risk free interest rate   
-PV = Present Value of Money  
-FV = Future Value of Money
-$$ FV_1 = PV + r(PV) $$
-
-
-$$ FV_2 = (FV_1) + r(FV_1) $$
-
----
-
-## Future Value of Money
-
-r = risk free interest rate   
-PV = Present Value of Money  
-FV = Future Value of Money
-$$ FV_1 = PV + r(PV) $$
-
-$$ FV_2 = (FV_1) + r(FV_1) $$
-
-$$ FV_2 = (PV + r(PV)) + r(PV + r(PV)) $$
-
----
-
-## Future Value of Money
-
-r = risk free interest rate   
-PV = Present Value of Money  
-FV = Future Value of Money
-$$ FV_1 = PV + r(PV) $$
-
-$$ FV_2 = (FV_1) + r(FV_1) $$
-
-
-$$ FV_2 = (PV + r(PV)) + r(PV + r(PV)) $$
-
-
-
-
-
-
-$$ FV_2 = PV(1 + 2r + r^2) $$
-
-
-
-
-$$ FV_2 = PV(1+r)^2 $$
-
----
-
-## Future Value of Money
-
-r = risk free interest rate   
-PV = Present Value of Money  
-FV = Future Value of Money
-$$ FV_1 = PV + r(PV) $$
-
-
-
-$$ FV_2 = PV(1+r)^2 $$
-
-$$ FV_t = PV(1+r)^t $$
-
-
-
-
+* Decreasing compouding interval by $n$ causes
 $$ FV_t = PV(1+\frac{r}{n})^{nt} $$
+* Letting $n \rightarrow \infty$,
+$$ FV_t \lim_{n\to\infty} PV(1+\frac{r}{n})^{\frac{n}{r} rt} $$
 
-
-### -t is a time step
-### -n is a unit conversion
-
----
-
-## Future Value of Money
-
-r = risk free interest rate   
-PV = Present Value of Money  
-FV = Future Value of Money  
-n = Unit Conversion  
-t = Time Conversion
-
-$$ FV_t = PV(1+\frac{r}{n})^{nt} $$
-
-$$ k = \frac{n}{r} $$
-
-$$ n = k*r $$
-
-
-$$ FV_t = PV(1+\frac{1}{k})^{krt} $$
-
----
-
-## Future Value of Money
-r = risk free interest rate   
-PV = Present Value of Money  
-FV = Future Value of Money  
-
-$$  e = \lim_{x\to\infty} (1+\frac{1}{x})^x $$
-
-$$ FV_t = PV(\lim_{k\to\infty} (1+\frac{1}{k})^{k})^{rt} $$
-
-$$ FV_t = PV (e^{rt}) $$
+$$ FV_t = PV e^{rt} $$
 
 ---
 ## Future Value of Money
@@ -329,7 +190,7 @@ $$ FV_t = PV (e^{rt}) $$
 * [Bank Savings interest rate](http://www.mysavingsdirect.com/MySavingsDirectWeb/en/common/information/LearnMore.jsp) $r = 1.25\%$ per annum. Starting balance = [$532.60](http://www.google.com/finance?q=NASDAQ%3AGOOGL&ei=fsF9VfG5JonSjAGE84J4)
 * Figure shows continuous, daily, monthly, quarterly, and annual compounding for 10 years
 ![Time Value of Money](assets/fig/fvMoney-1.png) 
-* Speculation: bank income is area between continuous compounding curve and client's compounding curve
+* Bank income is bounded by continuous compounding curve and client's compounding curve
 
 ---
 ## Risk Neutral Valuation of a Portfolio
@@ -491,21 +352,21 @@ where
 
 ---
 ## Google vs Savings Account
-### Numerical approximation to Google's stock price (Dates:  1/2/2015 - 6/12/2015)
+### Numerical estimate and actual stock price of Google (Dates:  1/2/2015 - 6/12/2015)
 <video   controls loop><source src="assets/fig/stockPricing-.webm" />video of chunk stockPricing</video>
-* Consequences of volatility in real and modeled S(t) are manifest
-* Importance of hedging risk is manifest
+* Volatility in actual and predicted price for Google stock is manifest
 
 ---
 ## Conclusions
 
 ### Optimizing FV of savings requires large $r$ and short compounding intervals
+*  Compounding interval ranges are daily, $\ldots$, or annual
 
 ### Stock speculation provides large gains, but with large risks
 
 ### $\Delta$ Hedging enables earning income at market rate $\mu$ with negligible risk
 * ratio between Google's rate of return and best available bank rate is $\mu / r =$ ``7.28``
-* high frquency trading rate is of order $1 \mu s$ vs daily, $\ldots$, or annual compounding of banks
+* high frequency trading rate is of order $1 \mu s$
 
 ### Binary Tree model enables pricing a call option for $\Delta$ Hedging.
 
