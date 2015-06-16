@@ -19,8 +19,8 @@ knit        : slidify::knit2slides
 
 ### Finance Theory:  
 1. Future Value of Money
-2. Binomial Tree Pricing Model for Option
-3. Pricing a Stock within a Wiener Process
+2. Option Pricing with Binomial Tree Pricing Model
+3. Stock Pricing within Framework of Wiener Process
 
 ### Conclusions
 
@@ -66,9 +66,9 @@ knit        : slidify::knit2slides
 \end{equation}
 
 ---
-## Tools from Statistics
+## Tools from Probability (1 / 4)
 
-### Observations
+### Recall
 * Given a set of observations $\{x_i\}$, the mean is
 
 <div class="centered">
@@ -97,21 +97,7 @@ knit        : slidify::knit2slides
 </div>
 
 ---
-## Tools from Probability (1 / 3)
-### [Stochastic Processes](http://en.wikipedia.org/wiki/Stochastic_process): observations whose values are random with respect to time
-
-
-### Markov Process
-* Future stock price depends only on current price.
-* Distributions are normal. Means are additive. Variances are additive.
-
-### Wiener Process
-
-* Future stock price depends only on current price.
-* Distributions are standard normal, i.e. $\mu = 0$ &  $\sigma^2 = 1$.
-
----
-## Tools from Probability (2 / 3)
+## Tools from Probability (2 / 4)
 ### Normal Distribution
 * Density is
 <div class="centered">
@@ -133,13 +119,27 @@ knit        : slidify::knit2slides
 * Definition: $\mu = 0$ &  $\sigma^2 = 1$
 
 ---
-## Tools from Probability (3 / 3)
+## Tools from Probability (3 / 4)
 ### Monte Carlo Data, Binomial Distribution, & Cental Limit Theorm
 * Left, mid, and right panels show $2$, $2^8$, and $2^{16}$ samples from 1000 simulations
 * Data are normalized.  Solid line shows density for standard normal.
 
 <video   controls loop><source src="assets/fig/CLTbinom-.webm" />video of chunk CLTbinom</video>
 * In limit, binomial distribution can be approximated by normal distribution
+
+---
+## Tools from Probability (4 / 4)
+### [Stochastic Processes](http://en.wikipedia.org/wiki/Stochastic_process): observations whose values are random with respect to time
+
+
+### Markov Process
+* Future stock price depends only on current price.
+* Distributions are normal. Means are additive. Variances are additive.
+
+### Wiener Process
+
+* Future stock price depends only on current price.
+* Distributions are standard normal, i.e. $\mu = 0$ &  $\sigma^2 = 1$.
 
 ---
 ## Tools from Stochastic Calculus
@@ -152,21 +152,22 @@ knit        : slidify::knit2slides
 ## Definitions from Finance
 
 ### Stock
-* An asset that is partial ownership of a publicly traded firm.
+* An asset representing partial ownership of a publicly traded firm.
 
+
+### American Option
+* Right to buy (long) or sell (short) an asset at strike price $S_k$ at any time until maturity for a premium.
 
 ### European Option
-* Right to buy (long) or sell (short) an asset (stock) at a strike price at a fixed date (maturity), for a fee today.
-
+* Right to buy (long) or sell (short) an asset at strike price $S_k$ at maturity for a premium.
 
 ### Call Option
-* The option to buy a stock in the future at a fixed price.
+* Option to buy an asset at strike price $S_k$ at maturity for a premium.
 * Two sides:  buyer and seller
 
 ### Put Option
-* The option to sell a stock in the future at a fixed price.
+* Option to sell an asset at strike price $S_k$ at maturity for a premium.
 * Two sides:  buyer and seller
-
 
 ---
 
@@ -404,12 +405,12 @@ where
 \end{equation}
 </div>
 
-* **NOTE**:  f is discounted expectation value of option's FV with a binomial density (*coin flip*)
+* **NOTE**:  f is discounted expectation value of option's FV against a binomial density (*coin flip*)
 
 ---
 ## Portfolio Management (4 / 4)
 
-### From Probability Theory, variance is proportional to $\Delta t$, so
+### For stochastic processes, variance is proportional to $\Delta t$, so
 
 <div class="centered">
 \begin{equation}
@@ -445,17 +446,19 @@ where
 ---
 ## Pricing a Stock
 
-### Current Status
-* Given a RNV Portfolio, binary tree model prices a call option for a $\Delta$ Hedge
-* The binary tree model is transformed from *RNV world* to *market world* by incorporating market return $\mu$ and volatility $\sigma^2 \Delta t$ in price multipliers $u$ & $d$
-* Remaining action is determining time dependence of stock price $S$
-* Two necessary properties are:
+### Summary
+* Given a RNV Portfolio, binary tree model prices a call option within a $\Delta$ Hedge
+* Binary tree model transforms from *RNV world* to *real market* by incorporating market return $\mu$ and volatility $\sigma^2 \Delta t$ in price multipliers $u$ & $d$
 
-1.  The change $\Delta z$ during a small period of time $\Delta t$ is $\Delta z = \epsilon \sqrt(\Delta t)$ where $\epsilon$ is a standard normal distribution.
-2.  The values of $\Delta z$ for any two different short intervals of time, $\Delta t$, are independent.
+### Next Steps
+* Determine time dependence of stock price $S$
+* Two assumptions are:
+
+1.  $\Delta z$ during a small time interval $\Delta t$ is $\Delta z = \epsilon \sqrt(\Delta t)$ where $\epsilon$ is a standard normal distribution.
+2.  Values of $\Delta z$ from any two time intervals $\Delta t$ are mutually independent.
 
 ---
-## Time Dependence of Stock Price $S$
+## Time Dependence of $S$
 
 <div class="centered">
 \begin{equation}
@@ -463,8 +466,7 @@ where
 \end{equation}
 </div>
 
-* Neglecting volatility, $S(t) = S_o e^{\mu t}$
-* Solving numerically,
+* Neglecting volatility, $S(t) = S_o e^{\mu t}$. Solving numerically,
 \begin{equation}
 \vdots
 \end{equation}
@@ -491,24 +493,24 @@ where
 ## Google vs Savings Account
 ### Numerical approximation to Google's stock price (Dates:  1/2/2015 - 6/12/2015)
 <video   controls loop><source src="assets/fig/stockPricing-.webm" />video of chunk stockPricing</video>
+* Consequences of volatility in real and modeled S(t) are manifest
+* Importance of hedging risk is manifest
 
 ---
 ## Conclusions
 
-### Finance utilizes multiple branches of mathematics
-* from Algebra to Stochastic Calculus
+### Optimizing FV of savings requires large $r$ and short compounding intervals
 
-### Future value of our money depends on $r$ and short compounding intervals
+### Stock speculation provides large gains, but with large risks
 
-### $\Delta$ Hedging demonstrates earning income at market rate $\mu$ with negligible risk
+### $\Delta$ Hedging enables earning income at market rate $\mu$ with negligible risk
 * ratio between Google's rate of return and best available bank rate is $\mu / r =$ ``7.28``
 * high frquency trading rate is of order $1 \mu s$ vs daily, $\ldots$, or annual compounding of banks
 
-### Binary Tree approximation enables pricing of call option for $\Delta$ Hedging.
+### Binary Tree model enables pricing a call option for $\Delta$ Hedging.
 
-### Binary Tree approximation with Wiener Process enables estimation of stock price
-* Wiener process shows risk of stochastic processes in pricing model
-* $\Delta$ Hedging mitigates inherent risk due of stochastic processes
+### Binary Tree model with Wiener Process enables stock pricing
+* Wiener process informs about inherent volatility of stock price
 
 ---
 ## Acknowledgements
