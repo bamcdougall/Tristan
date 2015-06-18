@@ -78,10 +78,12 @@ e = \lim_{n\to\infty} (1 + 1/n)^n
 
 * Let $f$ be a function of $x(t)$, $y(t)$, and $t$. The total derivative with respect to time is
 
+<div class="centered">
 \begin{equation}
 \frac{d f(x(t), y(t), t)}{d t} = \frac{\partial f}{\partial x} \frac{d x}{d t} + \frac{\partial f}{\partial y} \frac{d y}{d t}
 + \frac{\partial f}{\partial t} \frac{d t}{d t}
 \end{equation}
+</div>
 
 ---
 ## Tools from Probability (1 / 4)
