@@ -47,7 +47,7 @@ knit        : slidify::knit2slides
 
 <div class="centered">
 \begin{equation}
-    e = \lim_{n\to\infty} (1 + 1/n)^n
+e = \lim_{n\to\infty} (1 + 1/n)^n
 \end{equation}
 </div>
 
@@ -55,7 +55,7 @@ knit        : slidify::knit2slides
 
 * Assume a [linear measure]( http://en.wikipedia.org/wiki/Measure_(mathematics\) ) in $\Re^1$, then
 \begin{equation}
-    \int dx = x + C
+\int dx = x + C
 \end{equation}
 
 ### Total Derivative
@@ -63,8 +63,8 @@ knit        : slidify::knit2slides
 * Let $f$ be a function of $x(t)$, $y(t)$, and $t$. The total derivative with respect to time is
 
 \begin{equation}
-    \frac{d f(x(t), y(t), t)}{d t} = \frac{\partial f}{\partial x} \frac{d x}{d t} + \frac{\partial f}{\partial y} \frac{d y}{d t}
-    + \frac{\partial f}{\partial t} \frac{d t}{d t}
+\frac{d f(x(t), y(t), t)}{d t} = \frac{\partial f}{\partial x} \frac{d x}{d t} + \frac{\partial f}{\partial y} \frac{d y}{d t}
++ \frac{\partial f}{\partial t} \frac{d t}{d t}
 \end{equation}
 
 ---
@@ -75,7 +75,7 @@ knit        : slidify::knit2slides
 
 <div class="centered">
 \begin{equation}
-    \mu =  \sum_{i=1}^{n} \frac{x_i}{n}
+\mu =  \sum_{i=1}^{n} \frac{x_i}{n}
 \end{equation}
 </div>
 
@@ -84,7 +84,7 @@ knit        : slidify::knit2slides
 
 <div class="centered">
 \begin{equation}
-   \sigma^2  =  \sum_{i=1}^n \frac{(x_i - \mu)^2}{n}
+\sigma^2  =  \sum_{i=1}^n \frac{(x_i - \mu)^2}{n}
 \end{equation}
 </div>
 
@@ -94,7 +94,7 @@ knit        : slidify::knit2slides
 
 <div class="centered">
 \begin{equation}
-   \sigma^2  =  \langle x^2 \rangle - \langle x \rangle^2
+\sigma^2  =  \langle x^2 \rangle - \langle x \rangle^2
 \end{equation}
 </div>
 
@@ -104,7 +104,7 @@ knit        : slidify::knit2slides
 * Density is
 <div class="centered">
 \begin{equation}
-   f(x) = \frac{1}{\sqrt{2 \pi} \sigma} e^{-(x - \mu)^2/2 \sigma^2}
+f(x) = \frac{1}{\sqrt{2 \pi} \sigma} e^{-(x - \mu)^2/2 \sigma^2}
 \end{equation}
 </div>
 
@@ -113,7 +113,7 @@ knit        : slidify::knit2slides
 
 <div class="centered">
 \begin{equation}
-   E(x) = \langle x \rangle = \int_{-\infty}^{-\infty} x \frac{1}{\sqrt{2 \pi} \sigma} e^{-(x - \mu)^2/2 \sigma^2} dx
+E(x) = \langle x \rangle = \int_{-\infty}^{-\infty} x \frac{1}{\sqrt{2 \pi} \sigma} e^{-(x - \mu)^2/2 \sigma^2} dx
 \end{equation}
 </div>
 
@@ -219,7 +219,7 @@ $$ FV_t = PV e^{rt} $$
 * Value of RNV portfolio is same whether stock price goes up or down
 
 \begin{equation}
-    (\Delta S_o) u - f_u = (\Delta S_o) d - f_d
+(\Delta S_o) u - f_u = (\Delta S_o) d - f_d
 \end{equation}
 where u is the multiplier  for increase and d is multiplier for decrease
 
@@ -227,7 +227,7 @@ where u is the multiplier  for increase and d is multiplier for decrease
 * From equality, $\Delta$ required for creating a RNV Portfolio is
 
 \begin{equation}
-    \Delta = \frac{f_u - f_d}{S_o (u-d)}
+\Delta = \frac{f_u - f_d}{S_o (u-d)}
 \end{equation}
 
 ---
@@ -245,7 +245,7 @@ where u is the multiplier  for increase and d is multiplier for decrease
 
 <div class="centered">
 \begin{equation}
-    (\Delta S_o)  - f = e^{-r t} \left[ (\Delta S_o) u - f_u \right]
+(\Delta S_o)  - f = e^{-r t} \left[ (\Delta S_o) u - f_u \right]
 \end{equation}
 </div>
 
@@ -256,13 +256,13 @@ where u is the multiplier  for increase and d is multiplier for decrease
 
 <div class="centered">
 \begin{equation}
-   f = e^{-r t} \left[ p f_u + (1 - p) f_d \right]
+f = e^{-r t} \left[ p f_u + (1 - p) f_d \right]
 \end{equation}
 </div>
 where
 <div class="centered">
 \begin{equation}
-   p = \frac{e^{r t} - d}{u - d}
+p = \frac{e^{r t} - d}{u - d}
 \end{equation}
 </div>
 
@@ -275,7 +275,7 @@ where
 
 <div class="centered">
 \begin{equation}
-    \sigma^2 \Delta t = \langle S(t)^2 \rangle - \langle S(t) \rangle ^2
+\sigma^2 \Delta t = \langle S(t)^2 \rangle - \langle S(t) \rangle ^2
 \end{equation}
 </div>
 
@@ -285,7 +285,7 @@ where
 
 <div class="centered">
 \begin{equation}
-   \sigma^2 \Delta t = \left[ p u^2 + (1-p) d^2 \right] - \left[ \left( p u + (1-p) d \right)^2 \right]
+\sigma^2 \Delta t = \left[ p u^2 + (1-p) d^2 \right] - \left[ \left( p u + (1-p) d \right)^2 \right]
 \end{equation}
 </div>
 
@@ -296,7 +296,7 @@ where
 
 <div class="centered">
 \begin{equation}
-   \sigma^2 \Delta t = (u + d) e^{\mu t} - du - e^{2 \mu t}
+\sigma^2 \Delta t = (u + d) e^{\mu t} - du - e^{2 \mu t}
 \end{equation}
 </div>
 
@@ -323,7 +323,7 @@ where
 
 <div class="centered">
 \begin{equation}
-    d S = \mu S d t + \sigma S \epsilon \sqrt{dt}
+d S = \mu S d t + \sigma S \epsilon \sqrt{dt}
 \end{equation}
 </div>
 
@@ -334,7 +334,7 @@ where
 
 <div class="centered">
 \begin{equation}
-     \Delta S = \mu S \Delta t + \sigma S \epsilon \sqrt{\Delta t}
+\Delta S = \mu S \Delta t + \sigma S \epsilon \sqrt{\Delta t}
 \end{equation}
 </div>
 
@@ -345,13 +345,33 @@ where
 
 <div class="centered">
 \begin{equation}
-    S_{i + 1} = S_i + \mu S_i \Delta t + \sigma S_i \epsilon \sqrt{\Delta t}
+S_{i + 1} = S_i + \mu S_i \Delta t + \sigma S_i \epsilon \sqrt{\Delta t}
 \end{equation}
 </div>
 
+---
+## Hedge Fund
+
+### Concepts are assembled
+* Pricing model for European Options using Binomial Tree
+* Pricing model for a stock using a Wiener Process
+* Future Value of Money
+* RNV Portfolio
+
+### Hedge Fund functions similarly to a savings account
+
+<div class="centered">
+\begin{equation}
+FV = e^{\mu t} PV
+\end{equation}
+</div>
+
+### Comments
+* This is basis for [top 25 fund managers earning more income than all kindergarten teachers in US](http://www.washingtonpost.com/blogs/the-fix/wp/2015/05/12/the-top-25-hedge-fund-managers-earn-more-than-all-kindergarten-teachers-combined/)
+* CAUTION:  models discussed are simple; trading errors bankrupt institutions
 
 ---
-## Google vs Savings Account
+## Google vs Savings Account vs Hedge Fund
 ### Numerical estimate and actual stock price of Google (Dates:  1/2/2015 - 6/12/2015)
 <video   controls loop><source src="assets/fig/stockPricing-.webm" />video of chunk stockPricing</video>
 * Volatility in actual and predicted price for Google stock is manifest
@@ -360,18 +380,18 @@ where
 ## Conclusions
 
 ### Optimizing FV of savings requires large $r$ and short compounding intervals
-*  Compounding interval ranges are daily, $\ldots$, or annual
+*  Compounding intervals range range from daily, $\ldots$, or annual
 
 ### Stock speculation provides large gains, but with large risks
-
-### $\Delta$ Hedging enables earning income at market rate $\mu$ with negligible risk
-* ratio between Google's rate of return and best available bank rate is $\mu / r =$ ``7.28``
-* high frequency trading rate is of order $1 \mu s$
 
 ### Binary Tree model enables pricing a call option for $\Delta$ Hedging.
 
 ### Binary Tree model with Wiener Process enables stock pricing
 * Wiener process informs about inherent volatility of stock price
+
+### $\Delta$ Hedging enables earning income at market rate $\mu$ with negligible risk
+* Ratio between Google's rate of return and best available bank rate is $\mu / r =$ ``7.28``
+* High frequency trading rate is of order $1 \mu s$
 
 ---
 ## Acknowledgements
